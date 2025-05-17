@@ -12,7 +12,6 @@
 --     purchase_amount DECIMAL(10, 2),
 --     purchase_date DATE
 -- );
-
 -- INSERT INTO messy_indian_dataset (id, name, age, gender, email, phone_number, city, state, purchase_amount, purchase_date) VALUES
 -- (1, 'Rajesh patil', 30, 'M', 'raje#$#sh@example.com', '9876a43210', ' Mumbai ', ' Maharashtra ', 2500.50, '2023-01-05'),
 -- (1, 'rajesh patel', 30, ' m ', 'raje$#@sh@example.com', '987a543210', ' Mumbai', ' Maharashtra ', 100.50, '2023-01-05'),
@@ -47,7 +46,49 @@
 -- (2, NULL, 35, ' Male', 'test@example.com', '9876543232', 'Jaipur', 'Rajasthan', 1300.00, '2024-11-20'),
 -- (2, 'Surbhi Gupta', 26, NULL, 'surbhi@example.com', '9876543233', 'Nashik', ' Maharashtra ', 1150.50, '2024-12-05'),
 -- (30, 'Ajay Sharma', NULL, NULL, 'ajay@example.com', '9876543234', 'Jodhpur', 'Rajasthan', 1400.25, '2025-01-15');
-
--- Update Name
+-- !Update Name
 -- UPDATE messy_indian_dataset set name=trim(name);
-UPDATE messy_indian_dataset SET name=LOWER(name);
+-- UPDATE messy_indian_dataset SET name=LOWER(name);
+-- !Update Gender
+-- UPDATE messy_indian_dataset SET gender=trim(lower(gender));
+-- !Update City
+-- UPDATE messy_indian_dataset SET city=trim(lower(city));
+-- !UPDATE state
+-- UPDATE messy_indian_dataset SET state=trim(lower(state));
+-- !Clena & Update Email
+-- UPDATE messy_indian_dataset SET email= trim(REGEXP_REPLACE(lower(email),'[^a-z0-9@.]+',''));
+-- !Clean Phone Number
+-- UPDATE messy_indian_dataset
+-- SET phone_number = REGEXP_REPLACE(phone_number, '[^0-9]+', '');
+-- !Extrcting Username
+-- ALTER TABLE messy_indian_dataset add column username VARCHAR(50);
+-- UPDATE messy_indian_dataset set username=SUBSTRING_INDEX(email,'@',1);
+-- ! Create location
+-- ALTER TABLE messy_indian_dataset add column location VARCHAR(50);
+-- UPDATE messy_indian_dataset SET location=CONCAT(city,',',state);
+
+-- !Amount without gst
+-- ALTER TABLE messy_indian_dataset add column without_gst DECIMAL(10,2);
+
+-- UPDATE messy_indian_dataset SET without_gst=
+-- purchase_amount*.82;
+
+-- !Adding expire date
+-- ALTER TABLE messy_indian_dataset add column expire_date DATE;
+
+-- UPDATE messy_indian_dataset SET expire_date=
+-- DATE_ADD(purchase_date,INTERVAL 3 YEAR);
+
+-- Removing rows with Invalid Phone Numbers
+-- delete from messy_indian_dataset where 
+-- length(phone_number)!=10 OR phone_number REGEXP '[^0-9]';
+
+-- !Cleaning Gendre even further
+-- UPDATE messy_indian_dataset SET gender=case
+--    when gender in ('M','m','Male','MALE','male') then 'M'
+--    when gender in ('F','f','FeMale','FEMALE','female','Female') then 'F'
+--    else 'other'
+--    end;
+
+-- !Cleaning/Validating Age
+-- delete from messy_indian_dataset where age <=0 or age>=100;
