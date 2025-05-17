@@ -1,0 +1,50 @@
+-- 1.Create the view
+-- DROP view if exists rest;
+-- CREATE VIEW rest as (
+--     select name,rating,city,cuisine,cost*rating_count as revenue from restaurants
+-- );
+-- SELECT * from rest
+-- 2.Create view fro end_user
+-- CREATE VIEW user_view as (
+--     select name,
+--         rating,
+--         city,
+--         cuisine,
+--         cost * rating_count as revenue
+--     from restaurants
+-- );
+-- SELECT * from user_view;
+-- 3.  create view of sweet dishes
+-- CREATE VIEW sweets as(
+--      select * from restaurants where cuisine in ('sweets','deserts','bakery','Ice cream')
+-- );
+-- SELECT * from sweets;
+-- 4 create view of top 100 restraunts
+-- CREATE view top_100 as (
+--     select * from restaurants order by rating_count desc limit 100);
+-- SELECT * from top_100;
+-- 5.create view of least 100 restraunts
+-- CREATE view bottom_100 as (
+--     select * from restaurants order by rating_count asc limit 100);
+-- SELECT * from top_100;
+-- 6.Create view of top 1000 most expensive restraunts
+-- CREATE view top_1000 as (
+--     select * from restaurants order by cost desc limit 1000);
+-- SELECT * from top_1000;
+-- 7.Create a view fro top-rated restraunts in each city
+-- CREATE VIEW top_rated_rest_per_city AS
+-- SELECT *
+-- FROM (
+--     SELECT *,
+--         ROW_NUMBER() OVER (
+--             PARTITION BY city
+--             ORDER BY rating DESC
+--         ) AS 'rank'
+--     FROM restaurants
+-- ) AS ranked_table
+-- WHERE ranked_table.rank = 1;
+
+-- SELECT * from top_rated_rest_per_city;
+
+-- 8 create a view for restarunts with high revenue 
+
