@@ -2271,3 +2271,4 @@ It lists the top 10 unique restaurants with distinct names that have generated t
 
 These queries cover a range of analytical tasks from finding specific restaurant metrics to aggregating data by cities, cuisines, and restaurant chains. Understanding and practicing these queries will enhance your SQL proficiency for data analysis in various domains.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
