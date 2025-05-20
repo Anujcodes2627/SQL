@@ -549,37 +549,37 @@ Dropping and Creating a Table
 -- Dropping a table if it exists and creating a new one
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-employee_id INT,
+employee*id INT,
 name VARCHAR(50),
 age INT,
 department VARCHAR(50)
 );
-SELECT _ FROM employee;
+SELECT * FROM employee;
 Creating a Table with Constraints
 -- Dropping the table if it exists and creating a new one with constraints
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-employee_id INT,
+employee*id INT,
 name VARCHAR(50) NOT NULL,
 age INT CHECK (age >= 18),
 department VARCHAR(50)
 );
-SELECT _ FROM employee;
+SELECT * FROM employee;
 
 -- Dropping the table if it exists and creating a new one with additional constraints
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-employee_id SERIAL PRIMARY KEY,
+employee*id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
 age INT CHECK (age >= 18),
 department VARCHAR(50),
 hire_date DATE
 );
-SELECT _ FROM employee;
+SELECT * FROM employee;
 Altering a Table
 -- Adding a new column to a table
 ALTER TABLE employee ADD COLUMN email VARCHAR(50);
-SELECT _ FROM employee;
+SELECT \_ FROM employee;
 
 -- Renaming a column in a table
 ALTER TABLE employee RENAME COLUMN employee_id TO id;
@@ -1950,12 +1950,12 @@ RIGHT JOIN table2
 ON condition;
 Use Case: Use UNION to combine results of multiple joins into a single result set. This is useful when you need a comprehensive view that includes results from different types of joins.
 
-Example: users_2021 and users_2022
-SELECT _ FROM users.users_2021 AS t_2021
+Example: users*2021 and users_2022
+SELECT * FROM users.users*2021 AS t_2021
 LEFT JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID
 UNION
-SELECT _ FROM users.users_2021 AS t_2021
+SELECT * FROM users.users_2021 AS t_2021
 RIGHT JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID;
 e
@@ -1981,12 +1981,12 @@ Union removes duplicates, we are using the similar database users, which we have
 
 SELECT _ FROM users.users_2021
 UNION
-SELECT _ FROM users.users_2022;
+SELECT _ FROM users.users*2022;
 1
 query output
-SELECT _ FROM users.users_2021
+SELECT * FROM users.users*2021
 UNION
-SELECT _ FROM users.users_2023;
+SELECT * FROM users.users_2023;
 2
 query output
 
@@ -2014,12 +2014,12 @@ SELECT columns FROM table2;
 Example:
 SELECT _ FROM users.users_2021
 EXCEPT
-SELECT _ FROM users.users_2022;
+SELECT _ FROM users.users*2022;
 4
 query output
-SELECT _ FROM users.users_2023
+SELECT * FROM users.users*2023
 EXCEPT
-SELECT _ FROM users.users_2021;
+SELECT * FROM users.users_2021;
 5
 query output
 
@@ -2033,12 +2033,12 @@ SELECT columns FROM table2;
 Example:
 SELECT _ FROM users.users_2021
 INTERSECT
-SELECT _ FROM users.users_2022;
+SELECT _ FROM users.users*2022;
 6
 query output
-SELECT _ FROM users.users_2022
+SELECT * FROM users.users*2022
 INTERSECT
-SELECT _ FROM users.users_2023;
+SELECT * FROM users.users_2023;
 7
 query output
 Combining Multiple Set Operators
@@ -2105,15 +2105,15 @@ Practical Examples with Set Operators
 7. List All Users Except Those Who Are There With Us for 3 Years
    SELECT _ FROM users.users_2021
    UNION
-   SELECT _ FROM users.users_2022
+   SELECT _ FROM users.users*2022
    UNION
-   SELECT _ FROM users.users_2023
+   SELECT * FROM users.users*2023
    EXCEPT
-   SELECT _ FROM users.users_2021
+   SELECT * FROM users.users*2021
    INTERSECT
-   SELECT _ FROM users.users_2022
+   SELECT * FROM users.users*2022
    INTERSECT
-   SELECT _ FROM users.users_2023;
+   SELECT * FROM users.users_2023;
    7
    query output
 8. Operators with Join
@@ -2184,12 +2184,12 @@ Solution Query Explanation
    This query lists the top 10 restaurant chains by the number of restaurants they operate.
 
 6. Which restaurant chain has generated maximum revenue?
-   SELECT name, SUM(rating_count _ cost) AS revenue
+   SELECT name, SUM(rating*count * cost) AS revenue
    FROM restaurants
    GROUP BY name
    ORDER BY revenue DESC
    LIMIT 10;
-   It identifies the top 10 restaurant chains by the total revenue generated, calculated as the sum of rating_count _ cost.
+   It identifies the top 10 restaurant chains by the total revenue generated, calculated as the sum of rating*count * cost.
 
 7. Which city has the maximum number of restaurants?
    SELECT city, COUNT(\*) AS no_of_restaurants
@@ -2200,12 +2200,12 @@ Solution Query Explanation
    This query determines the top 10 cities with the most restaurants.
 
 8. Which city has generated maximum revenue all over India?
-   SELECT city, SUM(rating_count _ cost) AS revenue
+   SELECT city, SUM(rating*count * cost) AS revenue
    FROM restaurants
    GROUP BY city
    ORDER BY revenue DESC
    LIMIT 10;
-   It identifies the top 10 cities by total revenue generated from all restaurants, calculated as rating_count _ cost.
+   It identifies the top 10 cities by total revenue generated from all restaurants, calculated as rating*count * cost.
 
 9. List 10 least expensive cuisines?
    SELECT cuisine, AVG(cost) AS avg_cost
@@ -2243,3 +2243,618 @@ Solution Query Explanation
 These queries cover a range of analytical tasks from finding specific restaurant metrics to aggregating data by cities, cuisines, and restaurant chains. Understanding and practicing these queries will enhance your SQL proficiency for data analysis in various domains.
 
 ---
+
+                                    Analyzing query execution plans
+
+Understanding how SQL queries are executed is essential for optimizing performance and ensuring accurate results. In this article, we'll explore the order of execution of SQL queries using examples from the messy_indian_dataset. This will help you grasp the sequence in which SQL processes various components of a query.
+
+Understanding how SQL queries are executed is essential for optimizing performance and ensuring accurate results. In this article, we'll explore the order of execution of SQL queries using examples from the messy_indian_dataset. This will help you grasp the sequence in which SQL processes various components of a query.
+
+Example Queries and Their Execution Steps
+Let's delve into several SQL queries and break down the execution steps for each.
+
+Query 1: Simple SELECT Statement
+SELECT name, city
+FROM messy_indian_dataset;
+Execution Steps:
+FROM Clause: Identifies the source table (messy_indian_dataset) from which data will be retrieved.
+SELECT Clause: Specifies the columns (name and city) to include in the result set.
+Query 2: SELECT with WHERE Clause
+SELECT name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000;
+Execution Steps:
+FROM Clause: Identifies the source table (messy_indian_dataset).
+WHERE Clause: Filters rows where purchase_amount is greater than 1000.
+SELECT Clause: Specifies the columns (name, city, purchase_amount) to include in the result set.
+Query 3: SELECT with WHERE and ORDER BY Clauses
+SELECT name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000
+ORDER BY purchase_amount DESC;
+Execution Steps:
+FROM Clause: Identifies the source table (messy_indian_dataset).
+WHERE Clause: Filters rows where purchase_amount is greater than 1000.
+ORDER BY Clause: Sorts the result set based on purchase_amount in descending order.
+SELECT Clause: Specifies the columns (name, city, purchase_amount) to include in the result set.
+Query 4: SELECT with GROUP BY Clause
+SELECT city, AVG(purchase_amount) AS avg_purchase
+FROM messy_indian_dataset
+GROUP BY city;
+Execution Steps:
+FROM Clause: Identifies the source table (messy_indian_dataset).
+GROUP BY Clause: Groups rows by the city column.
+SELECT Clause: Computes the average purchase_amount for each city and includes city and avg_purchase in the result set.
+Query 5: SELECT with GROUP BY and HAVING Clauses
+SELECT city, AVG(purchase_amount) AS avg_purchase
+FROM messy_indian_dataset
+GROUP BY city
+HAVING AVG(purchase_amount) > 1000;
+Execution Steps:
+FROM Clause: Identifies the source table (messy_indian_dataset).
+GROUP BY Clause: Groups rows by the city column.
+HAVING Clause: Filters groups where the average purchase_amount is greater than 1000.
+SELECT Clause: Computes the average purchase_amount for each city and includes city and avg_purchase in the result set.
+Query 6: SELECT with JOIN
+SELECT m.name, m.city, s.region
+FROM messy_indian_dataset m
+JOIN states s ON m.state = s.state;
+Execution Steps:
+FROM Clause: Specifies the source tables (messy_indian_dataset as m and states as s) for data retrieval.
+JOIN: Joins rows from messy_indian_dataset (m) with states (s) based on matching state values.
+SELECT Clause: Specifies the columns (name, city from m and region from s) to include in the result set.
+Query 7: Nested SELECT (Subquery)
+SELECT name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > (SELECT AVG(purchase_amount) FROM messy_indian_dataset);
+Execution Steps:
+Subquery (FROM Clause): Executes the inner query to calculate the average purchase_amount across all records in messy_indian_dataset.
+FROM Clause: Identifies the source table (messy_indian_dataset).
+WHERE Clause: Filters rows where purchase_amount is greater than the average purchase_amount obtained from the subquery.
+SELECT Clause: Specifies the columns (name, city, purchase_amount) to include in the result set.
+Final Thoughts on Order of Execution
+Understanding the order of SQL query execution is critical for writing efficient and effective queries. The sequence typically follows:
+
+FROM: Determines the source tables and joins if any.
+WHERE: Applies row filtering.
+GROUP BY: Groups rows by specified columns.
+HAVING: Applies group filtering.
+SELECT: Determines which columns to include in the final result set.
+ORDER BY: Sorts the result set.
+LIMIT: Restricts the number of rows in the result set.
+By mastering these execution steps, SQL developers and analysts can optimize query performance and achieve accurate results from their data.
+
+---
+
+                                    Query Optimisation Techniques
+
+Query optimization is a critical aspect of database management that aims to improve query performance by minimizing execution time and resource consumption. In SQL, various techniques can be employed to optimize queries, ranging from proper indexing to restructuring queries for efficiency.
+
+Understanding Query Optimization
+Query optimization involves transforming queries in such a way that they can be executed more efficiently by the database engine. This process typically focuses on reducing the number of operations performed, optimizing access paths to data, and utilizing resources more effectively. By optimizing queries, you can achieve faster response times, reduce server load, and improve overall system performance.
+
+Common Query Optimization Techniques
+
+1. Avoid Accessing Unnecessary Data
+   Accessing unnecessary data can degrade query performance and increase network traffic. It's essential to retrieve only the required columns and rows using SELECT statements, especially when dealing with large datasets.
+
+Examples:
+-- Retrieve all columns (Avoid)
+SELECT \* FROM messy_indian_dataset;
+
+-- Retrieve specific columns
+SELECT id, name, city, purchase_amount FROM messy_indian_dataset;
+-- Retrieve specific columns with a filter and limit
+SELECT id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000
+LIMIT 5;
+-- Retrieve specific columns with calculations
+SELECT id, name, city, purchase_amount, purchase_amount \* 1.18 AS 'price with gst'
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000
+LIMIT 5; 2. Use the Right Kind of JOIN
+Choosing the appropriate join type can significantly impact query performance. Use INNER JOIN, LEFT JOIN, RIGHT JOIN, or FULL OUTER JOIN based on the relationship between tables and the desired result set.
+
+Example:
+SELECT \*
+FROM table1
+INNER JOIN table2 ON table1.column = table2.column; 3. Use of Appropriate Data Types
+Using correct data types for columns helps in reducing storage space and optimizing query performance. Choose data types that best fit the data being stored (e.g., INT, VARCHAR, TEXT, etc.).
+
+Examples:
+-- Example of using VARCHAR for short descriptions
+CREATE TABLE customer_correct (
+id INT,
+name VARCHAR(50),
+description VARCHAR(255)
+);
+
+-- Example of using TEXT for longer descriptions
+CREATE TABLE customer_correct (
+id INT,
+name VARCHAR(50),
+description TEXT
+); 4. Query Execution Plans
+Understanding and analyzing query execution plans can provide insights into how queries are processed by the database engine. This helps in identifying inefficiencies and optimizing queries accordingly.
+
+Example:
+-- Explain the query execution plan
+EXPLAIN SELECT id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000; 5. Caching
+Caching query results can improve performance by reducing the need to recompute the same result set repeatedly. This is particularly effective for queries that are executed frequently but return relatively static data.
+
+Example:
+-- Cache query results
+SELECT SQL_CACHE id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000; 6. Use of Temporary Tables
+Temporary tables can be used to store intermediate results of complex queries, reducing the need to repeat computations or access large datasets multiple times.
+
+Examples:
+-- Create a temporary table with high purchase amounts
+CREATE TEMPORARY TABLE high_purchase AS (
+SELECT id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE purchase_amount > 1000
+);
+
+-- Query the temporary table with a filter
+SELECT \*
+FROM high_purchase
+WHERE city = 'Mumbai';
+
+-- Query specific columns from the temporary table
+SELECT id, name, city, purchase_amount
+FROM high_purchase
+WHERE city = 'Mumbai';
+
+---
+
+                                                    Table Partitioning
+
+Table partitioning is a powerful database design technique used to improve query performance, manage large datasets efficiently, and enhance data availability and maintenance. This article explores the concept of table partitioning in SQL databases, its benefits, implementation strategies, and practical examples.
+
+What is Table Partitioning?
+Table partitioning involves splitting a large table into smaller, more manageable pieces called partitions. Each partition holds a subset of data based on a predefined criterion, such as a range of values in a column (e.g., dates, IDs) or a list of specific values. This technique allows queries and data management operations to target specific partitions, rather than the entire table, which can significantly improve performance.
+
+Benefits of Table Partitioning
+Improved Query Performance: Queries that access specific partitions can be processed faster because the database engine only needs to scan or manipulate relevant data subsets.
+
+Efficient Data Maintenance: Operations such as data insertion, deletion, and updates can be performed more efficiently on smaller partitions, reducing the overhead on the entire table.
+
+Enhanced Data Availability: Partitioning can improve availability by allowing individual partitions to be managed separately. This can simplify tasks such as backup, restore, and recovery.
+
+Scalability: Partitioning supports horizontal scalability by facilitating the distribution of data across multiple storage devices or servers, which can improve overall system performance.
+
+Types of Table Partitioning
+Range Partitioning: Data is partitioned based on ranges defined by a column’s values (e.g., dates, numeric ranges).
+List Partitioning: Data is partitioned based on discrete values specified in a column (e.g., states, categories).
+Hash Partitioning: Data is distributed across partitions based on a hash function applied to one or more columns. This aims to evenly distribute data without predefined ranges.
+Composite Partitioning: Combines multiple partitioning methods, such as range-hash or range-list, to meet specific data distribution and querying needs.
+Implementing Table Partitioning
+
+1. Range Partitioning
+   Range partitioning divides data based on ranges defined by a column's values, such as dates. It's useful for time-series data or when data is logically grouped by periods.
+
+-- Creating a range-partitioned table by year
+DROP TABLE IF EXISTS partitioned_dataset;
+CREATE TABLE partitioned_dataset (
+id INT,
+name VARCHAR(50),
+city VARCHAR(50),
+purchase_amount DECIMAL(10, 2),
+purchase_date DATE
+)
+PARTITION BY RANGE (YEAR(purchase_date)) (
+PARTITION p0 VALUES LESS THAN (2020),
+PARTITION p1 VALUES LESS THAN (2021),
+PARTITION p2 VALUES LESS THAN (2022),
+PARTITION p3 VALUES LESS THAN (2023),
+PARTITION p4 VALUES LESS THAN (2024)
+);
+
+-- Example query: Retrieving data for the year 2022
+SELECT name, city, purchase_amount
+FROM partitioned_dataset
+WHERE purchase_date BETWEEN '2022-01-01' AND '2022-12-31';
+Explanation:
+Partitioning Definition: The partitioned_dataset table is created with PARTITION BY RANGE (YEAR(purchase_date)), which specifies that the table is partitioned based on the year extracted from the purchase_date column.
+Partition Definition: Five partitions (p0 to p4) are defined using VALUES LESS THAN. Each partition contains data where the purchase_date falls within specific years (e.g., p0 for dates before 2020, p1 for dates in 2020, and so on).
+Query Execution: The query SELECT name, city, purchase_amount FROM partitioned_dataset WHERE purchase_date BETWEEN '2022-01-01' AND '2022-12-31' retrieves data from the partitioned_dataset table for the year 2022. The database engine optimizes performance by accessing only the relevant partition (p2 for 2022 data), avoiding unnecessary scanning of other partitions. 2. List Partitioning
+List partitioning categorizes data into partitions based on discrete values in a specified column. It's ideal for scenarios where data is grouped by predefined categories.
+
+-- Creating a list-partitioned table by city
+DROP TABLE IF EXISTS partitioned_dataset;
+CREATE TABLE partitioned_dataset (
+id INT,
+name VARCHAR(50),
+city VARCHAR(50),
+purchase_amount DECIMAL(10, 2),
+purchase_date DATE,
+city_code INT GENERATED ALWAYS AS (
+CASE
+WHEN city = 'Mumbai' THEN 1
+WHEN city = 'Delhi' THEN 2
+WHEN city = 'Bangalore' THEN 3
+WHEN city IN ('Kolkata', 'Chennai', 'Hyderabad', 'Pune') THEN 4
+ELSE NULL
+END
+) STORED
+)
+PARTITION BY LIST (city_code) (
+PARTITION p_mumbai VALUES IN (1),
+PARTITION p_delhi VALUES IN (2),
+PARTITION p_bangalore VALUES IN (3),
+PARTITION p_other VALUES IN (4)
+);
+
+-- Example query: Retrieving data for Mumbai
+SELECT name, purchase_amount
+FROM partitioned_dataset
+WHERE city = 'Mumbai';
+Explanation:
+Partitioning Definition: The partitioned_dataset table is created with PARTITION BY LIST (city_code), where city_code is generated based on the city column using a CASE statement. This defines the list of partitions (p_mumbai, p_delhi, p_bangalore, and p_other) based on specific city_code values.
+Partition Definition: Each partition is associated with a specific city_code value, ensuring that data for each city (Mumbai, Delhi, Bangalore, others) is stored in its respective partition.
+Query Execution: The query SELECT name, purchase_amount FROM partitioned_dataset WHERE city = 'Mumbai' retrieves data for Mumbai from the partitioned_dataset. The database engine efficiently accesses the p_mumbai partition, optimizing query performance by focusing only on the partition containing Mumbai's data. 3. Hash Partitioning
+Hash partitioning distributes data across partitions based on a hash function applied to a specified column. It evenly distributes data and is beneficial for load balancing.
+
+-- Creating a hash-partitioned table by id
+DROP TABLE IF EXISTS partitioned_dataset;
+CREATE TABLE partitioned_dataset (
+id INT,
+name VARCHAR(50),
+city VARCHAR(50),
+purchase_amount DECIMAL(10, 2),
+purchase_date DATE
+)
+PARTITION BY HASH(id) PARTITIONS 4;
+
+-- Example query: Retrieving data for a specific id
+SELECT name, city, purchase_amount
+FROM partitioned_dataset
+WHERE id = 12345;
+Explanation:
+Partitioning Definition: The partitioned_dataset table is created with PARTITION BY HASH(id) PARTITIONS 4, which specifies that the table is hash-partitioned based on the id column into 4 partitions.
+Data Distribution: The hash function distributes rows across partitions based on the result of HASH(id), ensuring an even distribution of data across the partitions.
+Query Execution: The query SELECT name, city, purchase_amount FROM partitioned_dataset WHERE id = 12345 retrieves data for a specific id from the partitioned_dataset. The database engine optimizes performance by directly accessing the partition containing data for the specified id, leveraging the hash partitioning scheme. 4. Subpartitioning
+Subpartitioning combines range or list partitioning with hash partitioning for finer granularity. It's useful for further optimizing data distribution and query performance.
+
+-- Creating a range-partitioned table with hash subpartitioning
+DROP TABLE IF EXISTS partitioned_dataset;
+CREATE TABLE partitioned_dataset (
+id INT,
+name VARCHAR(50),
+city VARCHAR(50),
+purchase_amount DECIMAL(10, 2),
+purchase_date DATE
+)
+PARTITION BY RANGE (YEAR(purchase_date))
+SUBPARTITION BY HASH(id) SUBPARTITIONS 4 (
+PARTITION p0 VALUES LESS THAN (2020),
+PARTITION p1 VALUES LESS THAN (2021),
+PARTITION p2 VALUES LESS THAN (2022),
+PARTITION p3 VALUES LESS THAN (2023),
+PARTITION p4 VALUES LESS THAN (2024)
+);
+
+-- Example query: Retrieving data for the year 2022
+SELECT name, city, purchase_amount
+FROM partitioned_dataset
+WHERE purchase_date BETWEEN '2022-01-01' AND '2022-12-31';
+Explanation:
+Partitioning Definition: The partitioned_dataset table is created with PARTITION BY RANGE (YEAR(purchase_date)) for range partitioning by year. It also uses SUBPARTITION BY HASH(id) SUBPARTITIONS 4 to define hash subpartitions within each range partition.
+Partition and Subpartition Definition: The table partitions (p0 to p4) are defined based on the YEAR(purchase_date). Within each range partition, data is further divided into hash subpartitions (4 subpartitions in total), ensuring balanced data distribution and optimized query processing.
+Query Execution: The query SELECT name, city, purchase_amount FROM partitioned_dataset WHERE purchase_date BETWEEN '2022-01-01' AND '2022-12-31' retrieves data for the year 2022 from the partitioned_dataset. The database engine efficiently accesses the relevant range partition (p2 for 2022 data) and its hash subpartitions, minimizing query execution time and resource consumption.
+Conclusion
+Table partitioning is a versatile technique in SQL for improving query performance and managing large datasets effectively. By leveraging range, list, hash, and subpartitioning strategies, database administrators can optimize data storage, enhance query execution times, and streamline database maintenance tasks.
+
+---
+
+                                                    Indexing in SQL
+
+Indexing in SQL is similar to creating a detailed table of contents for a book, enabling the database management system (DBMS) to quickly locate specific rows within a table. It works by creating a structured data structure (the index) that allows for efficient lookup operations based on the values of one or more columns.
+
+How Does Indexing Work?
+Imagine a scenario where you need to find all employees with a specific last name in a large company database. Without an index, the DBMS would potentially need to scan every row of the employees table sequentially, which becomes inefficient as the dataset grows. With an index on the last_name column, however, the DBMS can swiftly locate the rows matching the specified last name by directly accessing the index.
+
+Types of Indexes in SQL
+SQL databases support several types of indexes, each suited for different data access patterns and query requirements:
+
+Primary Index: Automatically created when defining a primary key constraint. It uniquely identifies each row in a table, facilitating fast retrieval of specific rows.
+Unique Index: Ensures that all values in the indexed column(s) are unique. It speeds up searches for unique values and also supports fast lookups.
+Non-Unique Index: Allows duplicate values in the indexed column(s) but still speeds up data retrieval operations.
+Composite Index: Combines multiple columns into a single index, useful for queries that filter or sort data using multiple columns.
+Clustered vs. Non-Clustered Index:
+Clustered Index: Organizes the physical order of rows in the table based on the indexed column(s). Each table can have only one clustered index.
+Non-Clustered Index: Stores the index separate from the actual data rows, allowing for more flexibility but typically requiring an additional lookup step to retrieve row data.
+Benefits of Indexing
+Improved Query Performance: Indexes reduce the number of data pages the DBMS needs to read to satisfy a query, resulting in faster data retrieval.
+Faster Sorting and Grouping: Indexes can accelerate sorting and grouping operations by providing pre-sorted views of data.
+Enhanced Data Integrity: Unique and primary key indexes enforce data integrity by preventing duplicate or null entries in specified columns.
+Optimized Joins: Indexes facilitate efficient join operations between tables by reducing the amount of data that needs to be scanned.
+
+1. Simple Index
+   create index idx_city on messy_indian_dataset(city);
+
+-- Query using the index
+select name, city, purchase_amount
+from messy_indian_dataset
+where city = 'Mumbai';
+Explanation:
+Index Creation (create index idx_city on messy_indian_dataset(city)):
+This query creates a simple index named idx_city on the city column of the messy_indian_dataset table.
+Indexes are data structures that allow the database system to quickly retrieve rows based on the indexed columns. They enhance query performance for columns frequently used in WHERE, JOIN, and ORDER BY clauses.
+Query Execution (select ... where city = 'Mumbai'):
+The WHERE clause filters rows where the city column equals 'Mumbai'.
+With the idx_city index on city, the database can efficiently locate and retrieve rows matching this condition. It does this by directly accessing the index structure rather than scanning the entire table. 2. Composite Index
+-- Drop existing index if it exists
+drop index idx_city on messy_indian_dataset;
+
+-- Create a composite index on the
+and
+columns
+create index idx_city on messy_indian_dataset(city, gender);
+
+-- Query using the composite index
+select name, city, purchase_amount
+from messy_indian_dataset
+where city = 'Mumbai';
+Explanation:
+Composite Index Creation (create index idx_city on messy_indian_dataset(city, gender)):
+This query creates a composite index named idx_city on the city and gender columns of the messy_indian_dataset table.
+Composite indexes are useful when queries involve multiple columns in conditions, such as WHERE or JOIN clauses involving both city and gender. They are particularly effective when these columns are queried together.
+Query Execution (select ... where city = 'Mumbai'):
+The query filters rows where the city column equals 'Mumbai'.
+The composite index idx_city can still be leveraged efficiently for this query despite gender not being used directly in the WHERE clause. It allows for rapid access to rows matching the specified city. 3. Unique Index
+-- Drop existing index if it exists
+drop index idx_city on messy_indian_dataset;
+
+-- Create a unique index on the
+column
+create unique index idx_city on messy_indian_dataset(id);
+
+-- Query using the unique index
+select name, city, purchase_amount
+from messy_indian_dataset
+where city = 'Mumbai';
+Explanation:
+Unique Index Creation (create unique index idx_city on messy_indian_dataset(id)):
+This query creates a unique index named idx_city on the id column of the messy_indian_dataset table.
+Unique indexes enforce uniqueness on the indexed column(s), ensuring that no two rows can have the same id value.
+Query Execution (select ... where city = 'Mumbai'):
+The query filters rows where the city column equals 'Mumbai'.
+Despite the unique index being on the id column, it does not directly impact the execution of this query because the WHERE clause does not involve the id column. The database optimizer will primarily use other available indexes or perform a full table scan. 4. Full-Text Index
+-- Drop existing index if it exists
+drop index idx_city on messy_indian_dataset;
+
+-- Create a full-text index on the
+and
+columns
+create fulltext index idx_city on messy_indian_dataset(name, email);
+
+-- Query using the full-text index for full-text search
+select name, city, purchase_amount
+from messy_indian_dataset
+where match(name, email) against('Rajesh');
+Explanation:
+Full-Text Index Creation (create fulltext index idx_city on messy_indian_dataset(name, email)):
+This query creates a full-text index named idx_city on the name and email columns of the messy_indian_dataset table.
+Full-text indexes are specialized indexes designed for efficiently searching and retrieving text-based data. They are optimized for operations involving natural language processing, such as searching for words or phrases within text columns.
+Query Execution (select ... where match(name, email) against('Rajesh')):
+The query uses the match ... against syntax to perform a full-text search for the term 'Rajesh' within the name and email columns.
+Full-text indexes enable fast retrieval of rows containing the specified search term, using techniques like word stemming and relevance ranking to improve search accuracy and performance. 5. Full-Text Index with Boolean Mode
+-- Query using the full-text index in boolean mode
+select name, city, purchase_amount
+from messy_indian_dataset
+where match(name, email) against('+Patel -Pooja' in boolean mode);
+Explanation:
+Query Execution (match ... against('+Patel -Pooja' in boolean mode)):
+The match ... against clause is used in boolean mode (IN BOOLEAN MODE) to perform a more complex full-text search.
+In boolean mode, you can use operators like + (must include), - (must exclude), and quotes for exact phrases (" "). This allows for precise control over the search criteria, refining the search results based on specific conditions.
+Use Case:
+The query searches for rows where the name or email columns contain the term Patel (+Patel) and excludes rows where Pooja is present (-Pooja).
+Full-text indexes in boolean mode are beneficial for advanced text search scenarios where you need fine-grained control over search criteria and result filtering.
+Best Practices for Indexing
+To maximize the benefits of indexing while minimizing potential drawbacks like increased storage space and overhead, consider these best practices:
+
+Identify Query Patterns: Analyze frequently executed queries and their access patterns to determine which columns should be indexed.
+Use Indexes Sparingly: Avoid over-indexing, as each index consumes storage and may slow down data modification operations (inserts, updates, deletes).
+Monitor Index Usage: Regularly monitor index usage and performance metrics to identify unused or underused indexes that can be safely removed.
+Index Maintenance: Periodically update statistics and rebuild/reorganize indexes to ensure they remain efficient as data in the table changes over time.
+Consider Database-specific Features: Different database systems (e.g., MySQL, PostgreSQL, SQL Server) may have unique indexing features and optimizations. Understand and utilize these features effectively.
+
+---
+
+                                    Common Table Expressions
+
+Common Table Expressions (CTEs) are a powerful feature in SQL that allow for better readability, modularity, and performance in complex queries. Introduced in SQL Server 2005 and later adopted by other database systems like PostgreSQL, MySQL, and Oracle, CTEs provide a way to define temporary result sets that can be referenced within a query.
+
+What is a Common Table Expression (CTE)?
+A Common Table Expression (CTE) is a named temporary result set that exists within the scope of a single SQL statement. It helps simplify complex queries by breaking them into smaller, more manageable parts. Essentially, a CTE is a query declaration that behaves like a temporary table or a view, but it only exists for the duration of the query.
+
+Syntax of CTE
+The syntax for creating a CTE involves two main parts:
+
+WITH cte_name (column_list) AS (
+-- CTE query definition
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+)
+-- Main query using CTE
+SELECT \*
+FROM cte_name;
+WITH clause: This begins the CTE definition. It includes the name of the CTE (cte_name) and optionally a list of column names (column_list) that the CTE will return.
+
+CTE query definition: This is a regular SQL SELECT statement that defines the data to be included in the CTE. It can include filtering, joining tables, aggregating data, or any other valid SQL operations.
+
+Main query: This is the query that uses the CTE. It references the CTE by its name (cte_name) as if it were a table or view.
+
+Advantages of Using CTEs
+Code Reusability: CTEs allow complex logic to be defined once and referenced multiple times within the same query, enhancing code reusability and maintainability.
+Improved Readability: By breaking down complex queries into smaller, named parts, CTEs improve query readability, making it easier to understand and debug SQL code.
+Optimization: Database engines can optimize CTEs like they would with views, potentially improving query performance by optimizing execution plans.
+Recursive Queries: CTEs can be recursive, enabling queries that iterate over hierarchical or recursive data structures, such as organizational charts or bill of materials.
+Practical Examples
+Example 1: Original Query vs. Simplified Query Using CTE
+Original Query:
+SELECT id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE city = 'Mumbai' AND purchase_amount > 1000 AND gender = 'Male';
+Simplified Query Using CTE:
+WITH MumbaiHighSpenders AS (
+SELECT id, name, city, purchase_amount
+FROM messy_indian_dataset
+WHERE city = 'Mumbai' AND purchase_amount > 1000 AND gender = 'Male'
+)
+SELECT id, name, city, purchase_amount
+FROM MumbaiHighSpenders;
+id name city purchase_amount
+1 Rajesh Patel Mumbai 1000.50
+5 Rajesh Patel Mumbai 1000.50
+Explanation:
+Original Query: Retrieves records from messy_indian_dataset where city is 'Mumbai', purchase_amount is greater than 1000, and gender is 'Male'.
+Simplified Query Using CTE: Defines a CTE named MumbaiHighSpenders that filters data based on the same conditions as the original query. The main query then selects all columns from this CTE. This approach enhances readability by separating the filtering logic into a named subquery (MumbaiHighSpenders).
+Example 2: Simplifying Complex Queries
+WITH ComplexQuery AS (
+SELECT c.customer_id, c.name, SUM(o.order_total) AS total_spent
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE c.city = 'New York' AND o.order_date >= '2023-01-01'
+GROUP BY c.customer_id, c.name
+HAVING SUM(o.order_total) > 5000
+)
+SELECT \*
+FROM ComplexQuery;
+customer_id name total_spent
+101
+
+John Doe
+
+6000.00
+102
+
+Jane Smith
+
+7500.00
+Explanation:
+This example demonstrates using a CTE named ComplexQuery to simplify a complex query involving joins, aggregation, filtering (WHERE), and grouping (GROUP BY). The CTE calculates the total amount spent by customers from New York since January 1, 2023, and filters out customers whose total spend exceeds 5000. The main query then selects all columns from this CTE, making the query more modular and easier to understand.
+
+Example 3: Reusing the Same Subquery
+WITH TopCustomers AS (
+SELECT customer_id, SUM(order_total) AS total_spent
+FROM orders
+GROUP BY customer_id
+HAVING SUM(order_total) > 10000
+)
+SELECT c.name, tc.total_spent
+FROM customers c
+JOIN TopCustomers tc ON c.customer_id = tc.customer_id;
+name total_spent
+John Doe 15000.00
+Jane Smith 12000.00
+Explanation:
+In this example, the TopCustomers CTE identifies customers whose total spending on orders exceeds 10,000. The main query then joins this CTE with the customers table to retrieve the names and total spending of these top customers. This approach avoids duplicating the subquery logic and improves query maintenance.
+
+Example 4: Improving Aggregation Performance
+WITH PreAggregated AS (
+SELECT
+city,
+COUNT(\*) AS num_purchases,
+SUM(purchase_amount) AS total_purchase,
+AVG(purchase_amount) AS avg_purchase,
+MAX(purchase_amount) AS max_purchase
+FROM messy_indian_dataset
+GROUP BY city
+)
+SELECT
+p.city,
+p.num_purchases,
+p.total_purchase,
+p.avg_purchase,
+p.max_purchase
+FROM PreAggregated p
+WHERE p.total_purchase > 100;
+city num_purchases total_purchase avg_purchase max_purchase
+Mumbai 2 2001.00 1000.50 1000.50
+Delhi 2 1600.75 800.38 800.00
+Bangalore 2 1500.50 750.25 750.25
+Kolkata 2 2401.50 1200.75 1200.75
+Lucknow 2 1950.50 975.25 900.00
+Jaipur 3 4200.00 1400.00 1500.00
+Chennai 1 1100.50 1100.50 1100.50
+Hyderabad 1 850.25 850.25 850.25
+Pune 1 950.75 950.75 950.75
+Ahmedabad 1 1300.00 1300.00 1300.00
+Surat 1 1150.50 1150.50 1150.50
+Varanasi 1 850.00 850.00 850.00
+Indore 1 1250.25 1250.25 1250.25
+Kochi 1 900.75 900.75 900.75
+Nagpur 1 1000.75 1000.75 1000.75
+Nashik 1 1150.50 1150.50 1150.50
+Patna 1 1250.25 1250.25 1250.25
+Chandigarh 1 1200.75 1200.75 1200.75
+Jaipur 1 1300.00 1300.00 1300.00
+Jodhpur 1 1400.25 1400.25 1400.25
+Explanation:
+The PreAggregated CTE computes aggregated metrics (COUNT, SUM, AVG, MAX) for purchase_amount grouped by city. This pre-aggregation reduces the amount of data processed and improves query performance. The main query then selects cities where the total purchase amount exceeds 100. This strategy leverages CTEs to optimize aggregation operations and enhance query efficiency.
+
+---
+
+SQL with ChatGPT
+SQL INTERVIEW QUESTIONS- https://github.com/AshishJangra27/interview-questions
+
+Using ChatGPT for SQL Assistance
+ChatGPT can assist in learning, troubleshooting, and optimizing SQL queries:
+
+1. Learning SQL Basics:
+   ChatGPT can explain SQL syntax, basic operations, and provide examples to reinforce learning.
+
+2. Query Optimization:
+   Get tips from ChatGPT on optimizing slow queries, indexing strategies, and restructuring complex queries for efficiency.
+
+3. Troubleshooting Queries:
+   If a query isn't producing expected results, ChatGPT can help identify potential issues like syntax errors or logical flaws.
+
+4. Advanced Techniques:
+   Explore advanced SQL concepts such as window functions, recursive queries, and complex joins with ChatGPT's guidance.
+
+Practical Examples with ChatGPT
+Let's see how ChatGPT can assist with real-world SQL scenarios:
+
+User Query:
+User: How can I find the total sales per month for the past year from the 'sales' table?
+ChatGPT: You can use a query like:
+SELECT MONTH(sale_date) AS month, YEAR(sale_date) AS year, SUM(sale_amount) AS total_sales
+FROM sales
+WHERE sale_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY YEAR(sale_date), MONTH(sale_date);
+Optimization Advice:
+User: My query to find top customers by total purchases is slow. Any suggestions?
+ChatGPT: Consider using pre-aggregation in a CTE to improve performance:
+WITH PreAggregated AS (
+SELECT customer_id, SUM(purchase_amount) AS total_spent
+FROM purchases
+GROUP BY customer_id
+)
+SELECT c.name, pa.total_spent
+FROM customers c
+JOIN PreAggregated pa ON c.customer_id = pa.customer_id
+ORDER BY pa.total_spent DESC
+LIMIT 10;
+Creating a Database Table
+User Input
+User: Hi ChatGPT, I have a dataset of employees with the following fields: ID, Name, Age, Gender, Department.
+Can you help me write a SQL query to create a table for this dataset?
+ChatGPT Response:
+ChatGPT: Sure! Here's a SQL query to create a table named 'employees' with the specified fields:
+
+CREATE TABLE employees (
+id INT PRIMARY KEY,
+name VARCHAR(50),
+age INT,
+gender VARCHAR(10),
+department VARCHAR(50)
+);
