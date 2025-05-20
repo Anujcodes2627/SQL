@@ -1,4 +1,4 @@
-						Understanding Databases
+    					Understanding Databases
 
 Databases serve as the backbone of modern data management systems, enabling efficient storage, retrieval, and manipulation of structured and unstructured data. Whether you're new to databases or looking to deepen your understanding, this guide will provide a comprehensive overview.
 
@@ -74,16 +74,17 @@ Scaling: Designed for horizontal scaling across distributed systems, accommodati
 Conclusion
 Understanding databases is essential for anyone involved in software development, data analytics, or IT operations. By grasping the fundamentals of databases, their components, types, and operations, you can leverage their power to build robust, scalable, and efficient applications.
 
--------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-								Data Retrieval with SQL
+    							Data Retrieval with SQL
 
 The most fundamental SQL command for data retrieval is the SELECT statement. It is used to fetch data from one or more tables in a database. The syntax for a simple SELECT statement is as follows:
 
 SELECT column1, column2, ...
 FROM table_name;
+
 1. Basic Data Retrieval
-Suppose we have a table named employees with the following structure:
+   Suppose we have a table named employees with the following structure:
 
 employee_id
 
@@ -127,18 +128,18 @@ Marketing
 
 5
 
-Jill Black	
+Jill Black
 29
 
 IT
 
 To retrieve all records from the employees table, you would use:
 
-SELECT * FROM employees;
+SELECT \* FROM employees;
 This query will return all columns for all rows in the employees table.
 
 2. Selecting Specific Columns
-To retrieve specific columns, you simply list the column names separated by commas.
+   To retrieve specific columns, you simply list the column names separated by commas.
 
 Example
 To retrieve only the name and department columns from the employees table:
@@ -149,9 +150,8 @@ This query returns only the name and department columns for all rows in the empl
 
 1
 
-
 3. Using Aliases
-Aliases can be used to give a table or a column a temporary name that is easier to work with or more descriptive.
+   Aliases can be used to give a table or a column a temporary name that is easier to work with or more descriptive.
 
 Example
 To retrieve the name column and give it an alias employee_name, and the department column with an alias dept:
@@ -162,60 +162,56 @@ This query returns the name column as employee_name and the department column as
 
 2
 
-
 4. Filtering Data with WHERE Clause
-The WHERE clause allows you to specify conditions that the data must meet to be included in the results.
+   The WHERE clause allows you to specify conditions that the data must meet to be included in the results.
 
 Example
 To retrieve all employees who are older than 30 years:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 WHERE age > 30;
 This query will return only the employees whose age is greater than 30.
 
 3
 
 5. Filtering Data with IN and NOT IN Command
-You can use IN and NOT IN to filter data based on a list of values.
+   You can use IN and NOT IN to filter data based on a list of values.
 
 1. To retrieve employees in the Sales or Marketing department:
 
-SELECT * FROM employees 
+SELECT \* FROM employees
 WHERE department IN ('Sales', 'Marketing');
-employee_id	name	age	department
-4	Jake White	30	Marketing
-2. To retrieve employees who are not in the Sales or Marketing department:
+employee_id name age department
+4 Jake White 30 Marketing 2. To retrieve employees who are not in the Sales or Marketing department:
 
-SELECT * FROM employees 
+SELECT \* FROM employees
 WHERE department NOT IN ('Sales', 'Marketing');
-employee_id	first_name	last_name	age	department
-1	John	Doe	28	HR
-2	Jane	Smith	34	Finance
-3	Jim	Brown	25	IT
-5	Jill	Black	29	IT
-6. Using Multiple Conditions with AND and OR
+employee_id first_name last_name age department
+1 John Doe 28 HR
+2 Jane Smith 34 Finance
+3 Jim Brown 25 IT
+5 Jill Black 29 IT 6. Using Multiple Conditions with AND and OR
 You can combine multiple conditions using AND and OR.
 
 Example
 To retrieve all employees who are older than 25 and work in the IT department:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 WHERE age > 25 AND department = 'IT';
 To retrieve all employees who are either older than 30 or work in the HR department:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 WHERE age > 30 OR department = 'HR';
 4
 
-
 7. Using Comparison Operators
-SQL supports various comparison operators for filtering data:
+   SQL supports various comparison operators for filtering data:
 
->: Greater than
+> : Greater than
 
 <: Less than
 
->=: Greater than or equal to
+> =: Greater than or equal to
 
 <=: Less than or equal to
 
@@ -228,75 +224,69 @@ IS NULL: Is null
 IS NOT NULL: Is not null
 
 Example
+
 1. To retrieve all employees whose age is between 25 and 30:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 WHERE age BETWEEN 25 AND 30;
 5
 
-
 2. To retrieve all employees whose name starts with 'J':
 
-SELECT * FROM employees
+SELECT \* FROM employees
 WHERE name LIKE 'J%';
 6
 
-
 Query 3: To Retrieve All Employees Who Do Not Have a Department Assigned
-SELECT * FROM employees
+SELECT _ FROM employees
 WHERE department IS NULL;
 Query 4: To Retrieve All Employees Who Do Have a Department Assigned
-SELECT * FROM employees
+SELECT _ FROM employees
 WHERE department IS NOT NULL;
-employee_id	first_name	last_name	age	department
-1	John	Doe	28	HR
-2	Jane	Smith	34	Finance
-3	Jim	Brown	25	IT
-4	Jake	White	30	Marketing
-5	Jill	Black	29	IT
-8. Sorting Data with ORDER BY
+employee_id first_name last_name age department
+1 John Doe 28 HR
+2 Jane Smith 34 Finance
+3 Jim Brown 25 IT
+4 Jake White 30 Marketing
+5 Jill Black 29 IT 8. Sorting Data with ORDER BY
 The ORDER BY clause is used to sort the result set by one or more columns. By default, the sorting is in ascending order. To sort in descending order, you can use the DESC keyword.
 
 Example
 To retrieve all employees and sort them by their age in ascending order:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 ORDER BY age ASC;
 To retrieve all employees and sort them by their age in descending order:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 ORDER BY age DESC;
 6
 
-
 9. Multiple Column Sorting
-You can sort by multiple columns by listing them separated by commas.
+   You can sort by multiple columns by listing them separated by commas.
 
 Example
 To sort employees by department in ascending order and within each department by age in descending order:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 ORDER BY department ASC, age DESC;
 7
 
-
 10. Using Offsets and Limits
-The LIMIT clause is used to specify the number of rows to return, and the OFFSET clause is used to specify the starting point within the result set.
+    The LIMIT clause is used to specify the number of rows to return, and the OFFSET clause is used to specify the starting point within the result set.
 
 Example
 To retrieve the first 3 employees:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 LIMIT 3;
 9
 
-
 To retrieve 3 employees starting from the second row:
 
-SELECT * FROM employees
+SELECT \* FROM employees
 LIMIT 3 OFFSET 1;
-8
-11. Saving SQL Queries in MySQL Workbench
+8 11. Saving SQL Queries in MySQL Workbench
 MySQL Workbench is a popular tool for managing MySQL databases. To save an SQL query in MySQL Workbench:
 
 Write your SQL query in the query editor.
@@ -305,8 +295,9 @@ Choose a location and provide a name for your SQL file. The default extension fo
 Click "Save".
 Your SQL query is now saved and can be executed later by opening the saved file in MySQL Workbench.
 
--------------------------------------------------------------------------------------------------------------------------------------------
-								Cases in SQL
+---
+
+    							Cases in SQL
 
 The CASE statement in SQL is a powerful tool used to implement conditional logic within SQL queries. It allows you to perform if-then-else logic in a query, making it possible to return different values based on certain conditions. This guide will cover the basics of the CASE statement, its syntax, and provide examples to illustrate its use in various scenarios.
 
@@ -314,22 +305,21 @@ Basic Syntax
 The CASE statement comes in two forms: the simple CASE and the searched CASE.
 
 1. Simple CASE Syntax
-The simple CASE statement compares an expression to a set of simple expressions to determine the result.
+   The simple CASE statement compares an expression to a set of simple expressions to determine the result.
 
 CASE expression
-    WHEN value1 THEN result1
-    WHEN value2 THEN result2
-    ...
-    ELSE resultN
-END
-2. Searched CASE Syntax
+WHEN value1 THEN result1
+WHEN value2 THEN result2
+...
+ELSE resultN
+END 2. Searched CASE Syntax
 The searched CASE statement evaluates a set of Boolean expressions to determine the result.
 
 CASE
-    WHEN condition1 THEN result1
-    WHEN condition2 THEN result2
-    ...
-    ELSE resultN
+WHEN condition1 THEN result1
+WHEN condition2 THEN result2
+...
+ELSE resultN
 END
 Examples of Using CASE Statements
 Example 1: Basic Usage
@@ -377,17 +367,17 @@ Marketing
 
 5
 
-Jill Black	
+Jill Black
 29
 
 IT
 
-SELECT 
-    name,
-    CASE department
-        WHEN 'IT' THEN 'IT Team'
-        ELSE 'Other'
-    END AS department_group
+SELECT
+name,
+CASE department
+WHEN 'IT' THEN 'IT Team'
+ELSE 'Other'
+END AS department_group
 FROM employees;
 This query will return the names of the employees along with a classification of their department.
 
@@ -401,35 +391,34 @@ END AS department_group: Ends the CASE statement and assigns an alias department
 Example 2: Using Multiple Conditions
 Suppose we want to classify employees into more specific age groups: 'Junior' for those under 25, 'Young' for those between 25 and 30, and 'Senior' for those over 30.
 
-SELECT 
-    employee_id,
-    name,
-    age,
-    department,
-    CASE
-        WHEN age < 25 THEN 'Junior'
-        WHEN age BETWEEN 25 AND 30 THEN 'Young'
-        ELSE 'Senior'
-    END AS age_group
+SELECT
+employee_id,
+name,
+age,
+department,
+CASE
+WHEN age < 25 THEN 'Junior'
+WHEN age BETWEEN 25 AND 30 THEN 'Young'
+ELSE 'Senior'
+END AS age_group
 FROM employees;
 10
 
 Example 3: Nested CASE Statements
 The goal here is to label employees under 30 as 'Jr Sales' if they are in the Sales department, otherwise as 'Junior'.
 
-SELECT 
-    name,
-    CASE
-        WHEN age < 30 THEN
-            CASE
-                WHEN department = 'Sales' THEN 'Jr Sales'
-                ELSE 'Junior'
-            END
-        ELSE 'Senior'
-    END AS employee_name
+SELECT
+name,
+CASE
+WHEN age < 30 THEN
+CASE
+WHEN department = 'Sales' THEN 'Jr Sales'
+ELSE 'Junior'
+END
+ELSE 'Senior'
+END AS employee_name
 FROM employees;
 1
-
 
 Explanation
 SELECT name: Retrieves the name column from the employees table.
@@ -442,21 +431,21 @@ END AS employee_name: Ends the CASE statement and assigns the result the alias e
 Example 4: Nested CASE with Additional Conditions
 Here, we introduce more conditions to label employees differently based on age and other criteria.
 
-SELECT 
-    name,
-    CASE
-        WHEN age < 30 THEN
-            CASE
-                WHEN department = 'Sales' THEN 'Jr Sales'
-                ELSE 'Junior'
-            END
-        WHEN age >= 30 AND age <= 38 THEN
-            CASE
-                WHEN department = 'Sales' THEN 'Mid Sales'
-                ELSE 'Middle'
-            END
-        ELSE 'Senior'
-    END AS employee_name
+SELECT
+name,
+CASE
+WHEN age < 30 THEN
+CASE
+WHEN department = 'Sales' THEN 'Jr Sales'
+ELSE 'Junior'
+END
+WHEN age >= 30 AND age <= 38 THEN
+CASE
+WHEN department = 'Sales' THEN 'Mid Sales'
+ELSE 'Middle'
+END
+ELSE 'Senior'
+END AS employee_name
 FROM employees;
 111
 
@@ -473,21 +462,23 @@ END AS employee_name: Ends the CASE statement and assigns the result the alias e
 Example 5: Handling NULL Values in the Department Column
 If the department is NULL, we can handle it by assigning a default value.
 
-SELECT 
-    name,
-    CASE
-        WHEN department IS NULL THEN 'No Department Assigned'
-        ELSE department
-    END AS department_status
+SELECT
+name,
+CASE
+WHEN department IS NULL THEN 'No Department Assigned'
+ELSE department
+END AS department_status
 FROM employees;
-first_name	last_name	department	department_status
-John	Doe	HR	HR
-Jane	Smith	Finance	Finance
-Jim	Brown	IT	IT
-Jake	White	Marketing	Marketing
-Jill	Black	NULL	No Department Assigned
--------------------------------------------------------------------------------------------------------------------------------------------
-							Introduction to DDL Commands
+first_name last_name department department_status
+John Doe HR HR
+Jane Smith Finance Finance
+Jim Brown IT IT
+Jake White Marketing Marketing
+Jill Black NULL No Department Assigned
+
+---
+
+    						Introduction to DDL Commands
 
 Data Definition Language (DDL) commands are used to define, modify, and remove database structures, such as tables, indexes, and schemas. These commands are essential for creating and maintaining the structure of a database, ensuring data integrity, and optimizing performance. In this article, we'll explore the primary DDL commands with practical examples.
 
@@ -501,10 +492,10 @@ Creating tables is one of the fundamental tasks in managing a database. The CREA
 
 Example: Creating an Employees Table
 CREATE TABLE Employees (
-    employee_id INT PRIMARY KEY,
-    name VARCHAR(50),
-    age INT,
-    department VARCHAR(50)
+employee_id INT PRIMARY KEY,
+name VARCHAR(50),
+age INT,
+department VARCHAR(50)
 );
 Inserting Data into the Table
 After creating the table, you can insert data into it using the INSERT INTO command.
@@ -538,73 +529,71 @@ You can add constraints to ensure data integrity. Here are examples of creating 
 
 -- Creating a table with NOT NULL and CHECK constraints
 CREATE TABLE Employees (
-    employee_id INT,
-    name VARCHAR(50) NOT NULL,
-    age INT CHECK (age >= 18),
-    department VARCHAR(50)
+employee_id INT,
+name VARCHAR(50) NOT NULL,
+age INT CHECK (age >= 18),
+department VARCHAR(50)
 );
-
 
 -- Creating a table with a SERIAL primary key and additional constraints
 CREATE TABLE Employees (
-    employee_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    age INT CHECK (age >= 18),
-    department VARCHAR(50),
-    hire_date DATE
+employee_id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+age INT CHECK (age >= 18),
+department VARCHAR(50),
+hire_date DATE
 );
 Practical Examples of Using DDL Commands
 Dropping and Creating a Table
 
-
 -- Dropping a table if it exists and creating a new one
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-    employee_id INT,
-    name VARCHAR(50),
-    age INT,
-    department VARCHAR(50)
+employee_id INT,
+name VARCHAR(50),
+age INT,
+department VARCHAR(50)
 );
-SELECT * FROM employee;
+SELECT _ FROM employee;
 Creating a Table with Constraints
 -- Dropping the table if it exists and creating a new one with constraints
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-    employee_id INT,
-    name VARCHAR(50) NOT NULL,
-    age INT CHECK (age >= 18),
-    department VARCHAR(50)
+employee_id INT,
+name VARCHAR(50) NOT NULL,
+age INT CHECK (age >= 18),
+department VARCHAR(50)
 );
-SELECT * FROM employee;
-
+SELECT _ FROM employee;
 
 -- Dropping the table if it exists and creating a new one with additional constraints
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
-    employee_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    age INT CHECK (age >= 18),
-    department VARCHAR(50),
-    hire_date DATE
+employee_id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+age INT CHECK (age >= 18),
+department VARCHAR(50),
+hire_date DATE
 );
-SELECT * FROM employee;
+SELECT _ FROM employee;
 Altering a Table
 -- Adding a new column to a table
 ALTER TABLE employee ADD COLUMN email VARCHAR(50);
-SELECT * FROM employee;
+SELECT _ FROM employee;
 
 -- Renaming a column in a table
 ALTER TABLE employee RENAME COLUMN employee_id TO id;
-SELECT * FROM employee;
+SELECT \* FROM employee;
 
 -- Dropping a column from a table
 ALTER TABLE employee DROP COLUMN email;
-SELECT * FROM employee;
+SELECT \* FROM employee;
 Conclusion
 DDL commands are essential for defining and managing the structure of a database. They allow you to create, modify, and delete database objects such as tables and indexes. By mastering these commands, you can effectively design and maintain a robust and efficient database system. The examples provided in this article offer a practical guide to using DDL commands in SQL, helping you to understand and apply these concepts in your database projects.
 
--------------------------------------------------------------------------------------------------------------------------------------------
-																							Introduction to Keys
+---
+
+    																						Introduction to Keys
 
 What is a Database?
 A database is a shared collection of logically related data designed to meet the information needs of an organization. Consider a franchise company, for example. The franchise stores various pieces of information such as customer details, inventory data, employee records, and sales figures. This data is logically related and stored in a database to facilitate easy access, management, and analysis.
@@ -627,8 +616,6 @@ Update: Modifying existing records in the database.
 Delete: Removing records from the database.
 What If All the Data Stored in the Servers Is Lost?
 The loss of all data stored in servers can be catastrophic, leading to operational disruptions, financial losses, and reputational damage. For instance, in 2017, Equifax suffered a data breach that exposed sensitive information of over 140 million customers, leading to severe consequences.
-
-
 
 Properties of a Database
 Integrity: Ensures accuracy and consistency of data.
@@ -656,7 +643,6 @@ Keys in Databases
 Keys are fundamental to database design as they ensure that each record within a table can be uniquely identified. They enforce integrity and establish relationships between tables. Let's explore different types of keys using the following data table:
 
 database_ex
-
 
 Types of Keys
 Super Key:
@@ -702,13 +688,12 @@ Many-to-Many: Multiple records in Table A are linked to multiple records in Tabl
 
 cardinality
 
-
 Conclusion
 Understanding keys is crucial for database design and management. They ensure data integrity, establish relationships between tables, and facilitate efficient data retrieval and manipulation. By using keys effectively, you can design robust databases that support the complex information needs of modern applications and businesses.
 
+---
 
--------------------------------------------------------------------------------------------------------------------------------------------
-																							Keys and Constraints
+    																						Keys and Constraints
 
 In SQL, keys and constraints are fundamental components used to ensure data integrity and establish relationships between tables. This article will explain the primary types of keys and constraints with practical examples.
 
@@ -720,11 +705,11 @@ A primary key is a unique identifier for each record in a table. It cannot conta
 
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE IF NOT EXISTS Employees (
-    employee_id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
-    department VARCHAR(50)
+employee_id SERIAL PRIMARY KEY,
+name VARCHAR(50),
+department VARCHAR(50)
 );
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 In this example, the employee_id column is the primary key for the Employees table. The SERIAL type automatically generates a unique value for each new record.
 
 Composite Key
@@ -732,12 +717,12 @@ A composite key consists of two or more columns that together uniquely identify 
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
-    order_id SERIAL,
-    customer_id INT,
-    order_date DATE,
-    PRIMARY KEY (order_id, customer_id)
+order_id SERIAL,
+customer_id INT,
+order_date DATE,
+PRIMARY KEY (order_id, customer_id)
 );
-SELECT * FROM Orders;
+SELECT \* FROM Orders;
 Here, order_id and customer_id together form the composite primary key for the Orders table, ensuring each order is uniquely identified by both columns.
 
 Constraints in SQL
@@ -748,12 +733,12 @@ A foreign key is a column (or a set of columns) that establishes a link between 
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
-    order_id SERIAL PRIMARY KEY,
-    customer_id INT,
-    order_date DATE,
-    FOREIGN KEY (customer_id) REFERENCES Employees (employee_id)
+order_id SERIAL PRIMARY KEY,
+customer_id INT,
+order_date DATE,
+FOREIGN KEY (customer_id) REFERENCES Employees (employee_id)
 );
-SELECT * FROM Orders;
+SELECT \* FROM Orders;
 In this example, customer_id in the Orders table is a foreign key that references the employee_id column in the Employees table.
 
 Unique Constraint
@@ -761,12 +746,12 @@ A unique constraint ensures that all values in a column are distinct.
 
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE IF NOT EXISTS Employees (
-    employee_id SERIAL PRIMARY KEY,
-    email VARCHAR(50) UNIQUE,
-    name VARCHAR(50),
-    department VARCHAR(50)
+employee_id SERIAL PRIMARY KEY,
+email VARCHAR(50) UNIQUE,
+name VARCHAR(50),
+department VARCHAR(50)
 );
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 Here, the email column in the Employees table must contain unique values, preventing duplicate email entries.
 
 Composite Unique Constraint
@@ -774,14 +759,14 @@ A composite unique constraint ensures that the combination of values in two or m
 
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE IF NOT EXISTS Employees (
-    employee_id SERIAL PRIMARY KEY,
-    email VARCHAR(50) UNIQUE,
-    phone INT UNIQUE,
-    name VARCHAR(50),
-    department VARCHAR(50),
-    UNIQUE (email, phone)
+employee_id SERIAL PRIMARY KEY,
+email VARCHAR(50) UNIQUE,
+phone INT UNIQUE,
+name VARCHAR(50),
+department VARCHAR(50),
+UNIQUE (email, phone)
 );
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 This example ensures that the combination of email and phone values is unique in the Employees table.
 
 Check Constraint
@@ -789,22 +774,23 @@ A check constraint enforces a condition on the values in a column. If a record v
 
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE IF NOT EXISTS Employees (
-    employee_id SERIAL PRIMARY KEY,
-    email VARCHAR(50) UNIQUE,
-    age INT CHECK (age >= 18),
-    phone INT UNIQUE,
-    name VARCHAR(50),
-    department VARCHAR(50),
-    UNIQUE (email, phone)
+employee_id SERIAL PRIMARY KEY,
+email VARCHAR(50) UNIQUE,
+age INT CHECK (age >= 18),
+phone INT UNIQUE,
+name VARCHAR(50),
+department VARCHAR(50),
+UNIQUE (email, phone)
 );
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 In this table, the age column must contain values greater than or equal to 18. This ensures that no employee can be younger than 18 years old.
 
 Conclusion
 Understanding keys and constraints is essential for designing robust and efficient databases. Keys ensure each record can be uniquely identified, while constraints enforce rules to maintain data integrity. By using these tools effectively, you can create databases that are both reliable and scalable.
 
--------------------------------------------------------------------------------------------------------------------------------------------
-								Insert Data in a table
+---
+
+    							Insert Data in a table
 
 Inserting data into a database table is a fundamental operation in SQL, enabling you to add records to your database. This article will explain the concepts and provide detailed examples of how to insert data into a table.
 
@@ -814,13 +800,13 @@ Before inserting data, we need a table to store the data. Here’s an example of
 USE employees;
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE IF NOT EXISTS Employees (
-    employee_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    department_id INT,
-    hire_date DATE
+employee_id SERIAL PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50),
+department_id INT,
+hire_date DATE
 );
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 In this example, we create an Employees table with the following columns:
 
 employee_id: A unique identifier for each employee, which is auto-incremented.
@@ -829,63 +815,60 @@ last_name: The last name of the employee.
 department_id: The ID of the department the employee belongs to.
 hire_date: The date the employee was hired.
 Inserting Data
+
 1. Inserting a Single Row
-To insert a single row into the Employees table, you use the INSERT INTO statement with the column names and the values to be inserted.
+   To insert a single row into the Employees table, you use the INSERT INTO statement with the column names and the values to be inserted.
 
 INSERT INTO Employees (employee_id, first_name, last_name, department_id, hire_date)
 VALUES (1, 'Ashish', 'Jangra', 1, '2021-07-16');
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 This inserts one record into the Employees table with the specified values.
 
 1
 Output
 
-
 Inserting Multiple Rows
 You can also insert multiple rows in a single INSERT INTO statement by separating the values for each row with a comma.
 
 INSERT INTO Employees (employee_id, first_name, last_name, department_id, hire_date)
-VALUES 
-    (2, 'Manish', 'Kumar', 2, '2021-10-16'),
-    (3, 'Sakshi', 'Awasthi', 2, '2021-10-16'),
-    (4, 'Avneet', 'Kaur', 3, '2021-10-16');
-SELECT * FROM Employees;
+VALUES
+(2, 'Manish', 'Kumar', 2, '2021-10-16'),
+(3, 'Sakshi', 'Awasthi', 2, '2021-10-16'),
+(4, 'Avneet', 'Kaur', 3, '2021-10-16');
+SELECT \* FROM Employees;
 This example adds three new rows to the Employees table.
 
 2
 Output
-
 
 Adding Partial Data
 If you don't have values for all columns, you can insert partial data. Columns not listed in the INSERT INTO statement will be set to their default value or NULL if no default is specified.
 
 INSERT INTO Employees (first_name, last_name)
 VALUES ('Ashish', 'Jangra');
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 In this case, only the first_name and last_name are provided. The other columns will use their default values or NULL.
 
 null
 Output
-
 
 Inserting Data in a Different Order
 The order of the columns in the INSERT INTO statement does not have to match the order of the columns in the table. You can specify the columns in any order.
 
 INSERT INTO Employees (department_id, hire_date, last_name, first_name)
 VALUES (1, '2022-10-10', 'Sakari', 'Prakash');
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 Here, the columns are specified in a different order, and the values are inserted accordingly.
 
 5
 Output
-
 
 Adding Data Without Order
 You can also add data without specifying the column names if you provide values for all columns in the exact order they are defined in the table.
 
 INSERT INTO Employees
 VALUES (11, 'Ashish', 'Jangra', 5, '2024-10-10');
-SELECT * FROM Employees;
+SELECT \* FROM Employees;
 This statement inserts values directly into all columns based on their order in the table definition.
 
 Adding Current Date and Default Values
@@ -893,29 +876,28 @@ You can create a table with default values for some columns, such as the current
 
 DROP TABLE IF EXISTS ExampleTable;
 CREATE TABLE IF NOT EXISTS ExampleTable (
-    employee_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    hire_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20) DEFAULT 'Active'
+employee_id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+hire_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+status VARCHAR(20) DEFAULT 'Active'
 );
-SELECT * FROM ExampleTable;
-
+SELECT \* FROM ExampleTable;
 
 INSERT INTO ExampleTable (name) VALUES ('Ashish');
-SELECT * FROM ExampleTable;
+SELECT _ FROM ExampleTable;
 INSERT INTO ExampleTable (name) VALUES ('Ashish'), ('Manish'), ('Parag');
-SELECT * FROM ExampleTable;
-
+SELECT _ FROM ExampleTable;
 
 INSERT INTO ExampleTable (name, status) VALUES ('Ashish', 'Inactive'), ('Manish', 'Inactive'), ('Parag', 'Inactive');
-SELECT * FROM ExampleTable;
+SELECT \* FROM ExampleTable;
 In this example, the hire_date column uses the current timestamp by default, and the status column defaults to 'Active'. When inserting data, you can omit these columns if you want to use the default values.
 
 Conclusion
 Inserting data into a table is a fundamental aspect of working with databases. Understanding how to use the INSERT INTO statement with different variations allows you to add records efficiently and effectively. Whether you're inserting a single row, multiple rows, partial data, or using default values, mastering these techniques is essential for managing and manipulating data in SQL databases.
 
--------------------------------------------------------------------------------------------------------------------------------------------
-						Update data from a table
+---
+
+    					Update data from a table
 
 Updating data in a database table is a crucial operation in managing and maintaining accurate and relevant information. In SQL, the UPDATE statement allows you to modify existing data in one or more rows of a table. This article will walk you through the concepts and examples of using the UPDATE statement, providing detailed explanations and sample outputs.
 
@@ -926,60 +908,60 @@ USE employees;
 DROP TABLE IF EXISTS People;
 
 CREATE TABLE People (
-    person_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    age INT,
-    city VARCHAR(50)
+person_id SERIAL PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50),
+age INT,
+city VARCHAR(50)
 );
 Insert sample data into the table
 INSERT INTO People (first_name, last_name, age, city)
-VALUES 
-    ('John', 'Doe', 30, 'New York'),
-    ('Jane', 'Smith', 25, 'Los Angeles'),
-    ('Michael', 'Johnson', 40, 'Chicago'),
-    ('Emily', 'Brown', 35, 'Houston'),
-    ('David', 'Jones', 28, 'San Francisco'),
-    ('Sarah', 'Davis', 32, 'Seattle'),
-    ('Robert', 'Wilson', 45, 'Boston'),
-    ('Jennifer', 'Martinez', 27, 'Miami'),
-    ('William', 'Taylor', 38, 'Atlanta'),
-    ('Jessica', 'Anderson', 33, 'Dallas'),
-    ('Daniel', 'Thomas', 29, 'Philadelphia'),
-    ('Maria', 'Jackson', 42, 'Phoenix'),
-    ('James', 'White', 31, 'Denver'),
-    ('Elizabeth', 'Harris', 36, 'Austin'),
-    ('Christopher', 'Clark', 39, 'San Diego'),
-    ('Amanda', 'Lewis', 26, 'Portland'),
-    ('Matthew', 'Walker', 34, 'Detroit'),
-    ('Ashley', 'Allen', 37, 'Las Vegas'),
-    ('Joseph', 'Young', 41, 'Nashville'),
-    ('Stephanie', 'Scott', 24, 'Orlando');
-SELECT * FROM People;
+VALUES
+('John', 'Doe', 30, 'New York'),
+('Jane', 'Smith', 25, 'Los Angeles'),
+('Michael', 'Johnson', 40, 'Chicago'),
+('Emily', 'Brown', 35, 'Houston'),
+('David', 'Jones', 28, 'San Francisco'),
+('Sarah', 'Davis', 32, 'Seattle'),
+('Robert', 'Wilson', 45, 'Boston'),
+('Jennifer', 'Martinez', 27, 'Miami'),
+('William', 'Taylor', 38, 'Atlanta'),
+('Jessica', 'Anderson', 33, 'Dallas'),
+('Daniel', 'Thomas', 29, 'Philadelphia'),
+('Maria', 'Jackson', 42, 'Phoenix'),
+('James', 'White', 31, 'Denver'),
+('Elizabeth', 'Harris', 36, 'Austin'),
+('Christopher', 'Clark', 39, 'San Diego'),
+('Amanda', 'Lewis', 26, 'Portland'),
+('Matthew', 'Walker', 34, 'Detroit'),
+('Ashley', 'Allen', 37, 'Las Vegas'),
+('Joseph', 'Young', 41, 'Nashville'),
+('Stephanie', 'Scott', 24, 'Orlando');
+SELECT \* FROM People;
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | John        | Doe       |  30 | New York     |
-|         2 | Jane        | Smith     |  25 | Los Angeles  |
-|         3 | Michael     | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  28 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Robert      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  27 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  29 | Philadelphia |
-|        12 | Maria       | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Christopher | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  26 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Joseph      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  24 | Orlando      |
+| 1 | John | Doe | 30 | New York |
+| 2 | Jane | Smith | 25 | Los Angeles |
+| 3 | Michael | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 28 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Robert | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 27 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 29 | Philadelphia |
+| 12 | Maria | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Christopher | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 26 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Joseph | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 24 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Updating Data in the Table
 Update Based on Primary Key
@@ -988,200 +970,201 @@ To update a specific row, you can use the primary key as a condition.
 UPDATE People
 SET age = 40
 WHERE person_id = 1;
-SELECT * FROM People;
+SELECT \* FROM People;
 This command updates the age of the person with person_id 1 to 40.
 
 Output:
 
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | John        | Doe       |  40 | New York     |
-|         2 | Jane        | Smith     |  25 | Los Angeles  |
-|         3 | Michael     | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  28 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Robert      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  27 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  29 | Philadelphia |
-|        12 | Maria       | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Christopher | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  26 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Joseph      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  24 | Orlando      |
+| 1 | John | Doe | 40 | New York |
+| 2 | Jane | Smith | 25 | Los Angeles |
+| 3 | Michael | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 28 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Robert | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 27 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 29 | Philadelphia |
+| 12 | Maria | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Christopher | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 26 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Joseph | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 24 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Update Based on Last Name
 UPDATE People
 SET city = 'Austin'
 WHERE last_name = 'Smith';
-SELECT * FROM People;
+SELECT \* FROM People;
 This command updates the city of the person with the last name Smith to Austin.
 
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | John        | Doe       |  40 | New York     |
-|         2 | Jane        | Smith     |  25 | Austin       |
-|         3 | Michael     | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  28 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Robert      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  27 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  29 | Philadelphia |
-|        12 | Maria       | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Christopher | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  26 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Joseph      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  24 | Orlando      |
+| 1 | John | Doe | 40 | New York |
+| 2 | Jane | Smith | 25 | Austin |
+| 3 | Michael | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 28 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Robert | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 27 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 29 | Philadelphia |
+| 12 | Maria | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Christopher | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 26 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Joseph | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 24 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Update Age of All People Under 30
 UPDATE People
 SET age = 30
 WHERE age < 30;
-SELECT * FROM People;
+SELECT \* FROM People;
 This command sets the age of all people under 30 to 30.
 
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | John        | Doe       |  40 | New York     |
-|         2 | Jane        | Smith     |  30 | Austin       |
-|         3 | Michael     | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  30 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Robert      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  30 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  30 | Philadelphia |
-|        12 | Maria       | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Christopher | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  30 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Joseph      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  30 | Orlando      |
+| 1 | John | Doe | 40 | New York |
+| 2 | Jane | Smith | 30 | Austin |
+| 3 | Michael | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 30 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Robert | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 30 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 30 | Philadelphia |
+| 12 | Maria | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Christopher | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 30 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Joseph | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 30 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Update Age of All People in a Specific City
 UPDATE People
 SET age = age + 1
 WHERE city = 'New York';
-SELECT * FROM People;
+SELECT \* FROM People;
 This command increments the age of all people in New York by 1.
 
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | John        | Doe       |  41 | New York     |
-|         2 | Jane        | Smith     |  30 | Austin       |
-|         3 | Michael     | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  30 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Robert      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  30 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  30 | Philadelphia |
-|        12 | Maria       | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Christopher | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  30 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Joseph      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  30 | Orlando      |
+| 1 | John | Doe | 41 | New York |
+| 2 | Jane | Smith | 30 | Austin |
+| 3 | Michael | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 30 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Robert | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 30 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 30 | Philadelphia |
+| 12 | Maria | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Christopher | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 30 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Joseph | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 30 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Update First Name of People Whose Age is Greater than 35
 UPDATE People
 SET first_name = 'Senior'
 WHERE age > 35;
-SELECT * FROM People;
+SELECT \* FROM People;
 This command changes the first_name of all people older than 35 to 'Senior'.
 
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | Senior      | Doe       |  41 | New York     |
-|         2 | Jane        | Smith     |  30 | Austin       |
-|         3 | Senior      | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  30 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Senior      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  30 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  30 | Philadelphia |
-|        12 | Senior      | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Senior      | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  30 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Senior      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  30 | Orlando      |
+| 1 | Senior | Doe | 41 | New York |
+| 2 | Jane | Smith | 30 | Austin |
+| 3 | Senior | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 30 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Senior | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 30 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 30 | Philadelphia |
+| 12 | Senior | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Senior | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 30 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Senior | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 30 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Update Multiple Values in One Go
 UPDATE People
 SET first_name = 'Ashish', last_name = 'Jangra', age = 25, city = 'India'
 WHERE person_id = 1;
-SELECT * FROM People;
+SELECT \* FROM People;
 This command updates multiple columns (first_name, last_name, age, city) for the person with person_id 1.
 
 Output:
 +-----------+-------------+-----------+-----+--------------+
-| person_id | first_name  | last_name | age | city         |
+| person_id | first_name | last_name | age | city |
 +-----------+-------------+-----------+-----+--------------+
-|         1 | Ashish      | Jangra    |  25 | India        |
-|         2 | Jane        | Smith     |  30 | Austin       |
-|         3 | Senior      | Johnson   |  40 | Chicago      |
-|         4 | Emily       | Brown     |  35 | Houston      |
-|         5 | David       | Jones     |  30 | San Francisco|
-|         6 | Sarah       | Davis     |  32 | Seattle      |
-|         7 | Senior      | Wilson    |  45 | Boston       |
-|         8 | Jennifer    | Martinez  |  30 | Miami        |
-|         9 | William     | Taylor    |  38 | Atlanta      |
-|        10 | Jessica     | Anderson  |  33 | Dallas       |
-|        11 | Daniel      | Thomas    |  30 | Philadelphia |
-|        12 | Senior      | Jackson   |  42 | Phoenix      |
-|        13 | James       | White     |  31 | Denver       |
-|        14 | Elizabeth   | Harris    |  36 | Austin       |
-|        15 | Senior      | Clark     |  39 | San Diego    |
-|        16 | Amanda      | Lewis     |  30 | Portland     |
-|        17 | Matthew     | Walker    |  34 | Detroit      |
-|        18 | Ashley      | Allen     |  37 | Las Vegas    |
-|        19 | Senior      | Young     |  41 | Nashville    |
-|        20 | Stephanie   | Scott     |  30 | Orlando      |
+| 1 | Ashish | Jangra | 25 | India |
+| 2 | Jane | Smith | 30 | Austin |
+| 3 | Senior | Johnson | 40 | Chicago |
+| 4 | Emily | Brown | 35 | Houston |
+| 5 | David | Jones | 30 | San Francisco|
+| 6 | Sarah | Davis | 32 | Seattle |
+| 7 | Senior | Wilson | 45 | Boston |
+| 8 | Jennifer | Martinez | 30 | Miami |
+| 9 | William | Taylor | 38 | Atlanta |
+| 10 | Jessica | Anderson | 33 | Dallas |
+| 11 | Daniel | Thomas | 30 | Philadelphia |
+| 12 | Senior | Jackson | 42 | Phoenix |
+| 13 | James | White | 31 | Denver |
+| 14 | Elizabeth | Harris | 36 | Austin |
+| 15 | Senior | Clark | 39 | San Diego |
+| 16 | Amanda | Lewis | 30 | Portland |
+| 17 | Matthew | Walker | 34 | Detroit |
+| 18 | Ashley | Allen | 37 | Las Vegas |
+| 19 | Senior | Young | 41 | Nashville |
+| 20 | Stephanie | Scott | 30 | Orlando |
 +-----------+-------------+-----------+-----+--------------+
 Conclusion
 The UPDATE statement in SQL is a powerful tool for modifying existing data in a table. It allows you to update specific rows based on various conditions and can be used to change multiple columns in a single statement. By using these examples, you can see how versatile and essential the UPDATE statement is for maintaining and managing data in your database.
 
--------------------------------------------------------------------------------------------------------------------------------------------
-							Delete data from a table
+---
+
+    						Delete data from a table
 
 Deleting data from a database table is a fundamental operation in database management systems (DBMS). It involves removing one or more rows of data that match specified conditions from a table. This operation is crucial for maintaining data integrity, managing storage space, and ensuring data compliance with organizational or regulatory requirements.
 
@@ -1197,34 +1180,34 @@ Example: Deleting Based on person_id
 -- Delete the person with person_id = 1
 DELETE FROM People
 WHERE person_id = 1;
-SELECT * FROM People;
+SELECT \* FROM People;
 In this example, the DELETE statement removes the row(s) from the People table where person_id equals 1. The subsequent SELECT statement shows the updated contents of the People table after the deletion.
 
 Example: Deleting Based on age Condition
 -- Delete all people under age 30
 DELETE FROM People
 WHERE age < 30;
-SELECT * FROM People;
+SELECT \* FROM People;
 Here, all rows in the People table where the age column is less than 30 are deleted. The SELECT statement verifies the changes made to the table.
 
 Example: Deleting Based on city
 -- Delete all people in Las Vegas
 DELETE FROM People
 WHERE city = 'Las Vegas';
-SELECT * FROM People;
+SELECT \* FROM People;
 This example deletes all rows from the People table where the city column value is 'Las Vegas'. The SELECT statement confirms the resulting state of the People table.
 
 Example: Deleting Based on last_name Pattern
 -- Delete people whose last name starts with 'W'
 DELETE FROM People
 WHERE last_name LIKE 'W%';
-SELECT * FROM People;
+SELECT \* FROM People;
 In this case, rows are deleted from the People table where the last_name column starts with the letter 'W'. The % wildcard in the LIKE operator matches any sequence of characters, making it useful for pattern-based deletions.
 
 Example: Deleting All Rows
 -- Delete all rows from the People table
 DELETE FROM People;
-SELECT * FROM People;
+SELECT \* FROM People;
 This straightforward example deletes all rows from the People table without any conditions specified in the WHERE clause. After execution, the SELECT statement shows an empty table.
 
 Considerations
@@ -1234,9 +1217,9 @@ Data Integrity: Be mindful of foreign key constraints or cascading deletes that 
 Conclusion
 Deleting data from a table is a crucial operation in SQL, allowing for the removal of specific records or entire datasets as needed. Understanding the syntax and nuances of the DELETE statement is essential for effectively managing and manipulating data within a database system. Always exercise caution and test deletions in a controlled environment to avoid unintended data loss.
 
--------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-							SQL in Action
+    						SQL in Action
 
 In the world of database management, SQL (Structured Query Language) serves as a powerful tool for retrieving and manipulating data. Let's explore SQL in action through a series of queries on a sample dataset, demonstrating various functionalities and techniques.
 
@@ -1246,7 +1229,7 @@ Consider a hypothetical dataset named products containing information about vari
 Query Examples:
 Displaying the Dataset
 -- Show all columns from the products table
-SELECT * FROM products;
+SELECT _ FROM products;
 Selecting Specific Columns
 -- Show only product_name and brand_name columns
 SELECT product_name, brand_name FROM products;
@@ -1259,11 +1242,11 @@ SELECT product_name, brand_name, marked_price, discounted_price, marked_price - 
 FROM products;
 Creating a New Column with Mathematical Functions (Rating Filter)
 -- Calculate rating_filter by multiplying rating and rating_count
-SELECT product_name, brand_name, rating, rating_count, rating * rating_count AS rating_filter
+SELECT product_name, brand_name, rating, rating_count, rating _ rating_count AS rating_filter
 FROM products;
 Creating a New Column with Mathematical Functions (Discount Percentage)
 -- Calculate discounted_percent as the percentage discount
-SELECT product_name, brand_name, marked_price, discounted_price, ((marked_price - discounted_price) / marked_price) * 100 AS discounted_percent
+SELECT product_name, brand_name, marked_price, discounted_price, ((marked_price - discounted_price) / marked_price) \* 100 AS discounted_percent
 FROM products;
 Finding Unique Values
 -- Find unique brand_names in the products table
@@ -1299,9 +1282,9 @@ Adding More Filters
 SELECT product_name, brand_tag, marked_price, discounted_price
 FROM products
 WHERE (discounted_price BETWEEN 5000 AND 8000)
-    AND brand_tag = 'Adidas'
-    AND rating > 4
-    AND rating_count > 10;
+AND brand_tag = 'Adidas'
+AND rating > 4
+AND rating_count > 10;
 Using OR Condition
 -- Show products from Adidas or Puma brands with discounted_price between 3000 and 5000
 SELECT product_name, product_tag, brand_tag, discounted_price
@@ -1325,10 +1308,9 @@ WHERE brand_tag NOT IN ('Adidas', 'Puma') AND discounted_price BETWEEN 3000 AND 
 Conclusion
 SQL provides a comprehensive set of tools for querying and manipulating data in relational databases. These examples illustrate how SQL queries can be used to retrieve specific information, perform calculations, filter data, and more. Understanding these functionalities empowers database administrators and analysts to efficiently manage and derive insights from their datasets, making SQL an indispensable skill in the realm of data management and analytics.
 
+---
 
-----------------------------------------------------------------------------------------------------------------------------------------------
-
-							Pattern Matching
+    						Pattern Matching
 
 Pattern matching in SQL is a powerful feature that allows you to search for specific patterns within strings of text data. Whether you're looking for email addresses, phone numbers, names, or any other structured format, SQL provides mechanisms to efficiently find and manipulate such data. Let's explore how pattern matching works, its syntax, common operators, and examples of its practical applications.
 
@@ -1338,7 +1320,7 @@ The most basic form of pattern matching in SQL is through the LIKE operator. Thi
 Wildcard Characters:
 % (Percent): Matches any sequence of characters (including zero characters).
 
-_ (Underscore): Matches any single character.
+\_ (Underscore): Matches any single character.
 
 Syntax of LIKE Operator:
 SELECT column_name(s)
@@ -1357,52 +1339,52 @@ Assume, using similar dataset that we have used in previous module, in which we 
 Example Queries:
 Finding Products where Product Name Ends with 's'
 -- Find the products where the product name ends with 's'
-SELECT *
+SELECT \*
 FROM products
 WHERE product_name LIKE '%s';
 This query retrieves all products where the product_name ends with the letter 's'. The % wildcard matches any sequence of characters (including zero characters).
 
 Finding Products where Brand Name Contains 'ad'
 -- Find the products where the brand name contains 'ad'
-SELECT *
+SELECT \*
 FROM products
 WHERE brand_name LIKE '%ad%';
 Here, %ad% matches any string that contains 'ad' anywhere within the brand_name.
 
 Finding Products where Name Starts with 'P' and Ends with 'S'
 -- Find the products where the brand name starts with 'P' and ends with 'S'
-SELECT *
+SELECT \*
 FROM products
 WHERE brand_name LIKE 'P%S';
 This query looks for products where the brand_name starts with 'P' and ends with 'S'. The % wildcard can match any sequence of characters, including zero characters.
 
 Finding Products where Product Name Starts with 'S'
 -- Find the products where the product name starts with 'S'
-SELECT *
+SELECT \*
 FROM products
 WHERE product_name LIKE 'S%';
 This query retrieves products where the product_name starts with the letter 'S'. Unlike the % wildcard, which matches any sequence of characters, using S% specifically looks for strings starting with 'S'.
 
 Finding Products where Product Name Contains 'SHO'
 -- Find the products where the product name contains 'SHO'
-SELECT *
+SELECT \*
 FROM products
 WHERE product_name LIKE '%SHO%';
 Here, %SHO% matches any string that contains 'SHO' anywhere within the product_name. The case sensitivity depends on the SQL server's configuration.
 
 Finding Products where Brand Name is Exactly 6 Characters Long
 -- Find the products where the brand name is exactly 6 characters long
-SELECT *
+SELECT \*
 FROM products
-WHERE brand_name LIKE '______';
-In SQL, _ (underscore) is used to match exactly one character. So, ______ matches any string that is exactly 6 characters long.
+WHERE brand*name LIKE '**\_\_**';
+In SQL, * (underscore) is used to match exactly one character. So, **\_\_** matches any string that is exactly 6 characters long.
 
 Finding Products where the Second Character of Brand Name is 's'
 -- Find the products where the second character of the brand name is 's'
-SELECT *
+SELECT \*
 FROM products
-WHERE brand_name LIKE '_s%';
-Here, _s% matches any string where the second character of brand_name is 's'. The _ wildcard matches exactly one character.
+WHERE brand*name LIKE '\_s%';
+Here, \_s% matches any string where the second character of brand_name is 's'. The * wildcard matches exactly one character.
 
 Practical Applications of Pattern Matching
 Data Validation: Ensure that data entered into specific fields (like emails, phone numbers) conforms to expected patterns.
@@ -1411,25 +1393,27 @@ Data Cleansing: Identifying and correcting inconsistencies or errors in data by 
 Data Analysis: Analyzing text data to identify trends or patterns based on specific criteria (like sentiment analysis based on word patterns).
 Conclusion
 Pattern matching in SQL, whether through the LIKE operator or regular expressions, is a versatile tool for querying and manipulating textual data within databases. It enables precise searches and validations that are crucial for data integrity, analysis, and application development. Mastering pattern matching techniques empowers SQL developers and analysts to handle diverse data challenges effectively, making it an essential skill in modern database management and data-driven decision-making processes.
-----------------------------------------------------------------------------------------------------------------------------------------------
-								Aggregate Functions
+
+---
+
+    							Aggregate Functions
 
 Aggregate functions in SQL are indispensable tools for data analysis and reporting. These functions perform calculations on a set of values and return a single value, allowing users to summarize and gain insights from their data. The most commonly used aggregate functions include COUNT(), AVG(), MAX(), MIN(), and SUM(). This article will delve into each of these functions, providing theoretical background and practical examples to illustrate their use.
 
 1. COUNT(): Counting Rows
-The COUNT() function is used to count the number of rows in a table or the number of non-null values in a column.
+   The COUNT() function is used to count the number of rows in a table or the number of non-null values in a column.
 
 Example: Finding the Number of Products in the Dataset
 To find the total number of products in a dataset, the COUNT() function is used. This function counts the number of rows that match a specified criterion.
 
-SELECT count(*) as total_products FROM products;
+SELECT count(\*) as total_products FROM products;
 The above query returns the total number of rows in the products table. The result will include all rows, regardless of whether any specific column is null.
 
 SELECT count(product_name) as total_products FROM products;
 This query counts the number of non-null product_name entries in the products table. If any product names are missing (null), they will not be included in the count.
 
 2. AVG(): Calculating the Average
-The AVG() function calculates the average value of a numeric column.
+   The AVG() function calculates the average value of a numeric column.
 
 Example: Finding the average discounted price of products.
 SELECT AVG(discounted_price) AS average_price FROM products;
@@ -1439,7 +1423,7 @@ SELECT AVG(marked_price) AS average_price FROM products;
 This query calculates the average marked price of all products in a similar manner.
 
 3. MAX(): Finding the Maximum Value
-The MAX() function returns the highest value in a column.
+   The MAX() function returns the highest value in a column.
 
 Example: Finding the most expensive product.
 SELECT MAX(discounted_price) AS highest_discounted_price FROM products;
@@ -1449,7 +1433,7 @@ SELECT MAX(marked_price) AS highest_marked_price FROM products;
 This query returns the highest marked price among all products.
 
 4. MIN(): Finding the Minimum Value
-The MIN() function returns the lowest value in a column.
+   The MIN() function returns the lowest value in a column.
 
 Example: Finding the least expensive product.
 SELECT MIN(discounted_price) AS lowest_discounted_price FROM products;
@@ -1459,14 +1443,14 @@ SELECT MIN(marked_price) AS lowest_marked_price FROM products;
 This query returns the lowest marked price among all products.
 
 5. SUM(): Summing Values
-The SUM() function adds up all the values in a numeric column.
+   The SUM() function adds up all the values in a numeric column.
 
 Example: Finding the total rating count of all products.
 SELECT SUM(rating_count) AS total_rating FROM products;
 This query calculates the total rating count of all products, providing insight into the cumulative rating numbers.
 
 6. DISTINCT and COUNT(): Counting Unique Values
-The DISTINCT keyword can be used to return unique values in a column, and when combined with COUNT(), it counts the number of unique entries.
+   The DISTINCT keyword can be used to return unique values in a column, and when combined with COUNT(), it counts the number of unique entries.
 
 Example: Finding the total unique brands.
 SELECT DISTINCT(brand_name) AS brands FROM products;
@@ -1476,9 +1460,9 @@ Example: Finding the number of unique brands.
 SELECT COUNT(DISTINCT(brand_name)) AS total_brands FROM products;
 This query returns the number of unique brand names in the products table.
 
-----------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-						Grouping and Filtering Data
+    					Grouping and Filtering Data
 
 Grouping data in SQL allows you to aggregate data based on one or more columns, making it possible to calculate summary statistics, such as counts, sums, averages, and more. The GROUP BY clause is used for this purpose.
 
@@ -1499,7 +1483,7 @@ Using the Database and Viewing the Table
 First, ensure you're using the correct database and view the data in the products table:
 
 USE gfg;
-SELECT * FROM products;
+SELECT \* FROM products;
 Grouping Data Examples
 Finding Unique Brand Names
 SELECT DISTINCT brand_name FROM products;
@@ -1591,11 +1575,11 @@ Combining Grouping and Filtering
 By combining WHERE, GROUP BY, and HAVING clauses, you can perform complex queries that aggregate and filter data simultaneously.
 
 Brand Report Card
-SELECT brand_tag, 
-       SUM(rating_count) AS 'people_rated',
-       MIN(marked_price) AS 'min_mar_price',
-       AVG(marked_price) AS 'avg_mar_price',
-       MAX(marked_price) AS 'max_mar_price'
+SELECT brand_tag,
+SUM(rating_count) AS 'people_rated',
+MIN(marked_price) AS 'min_mar_price',
+AVG(marked_price) AS 'avg_mar_price',
+MAX(marked_price) AS 'max_mar_price'
 FROM products
 GROUP BY brand_tag;
 This query provides a summary report for each brand, including the total number of ratings, minimum, average, and maximum marked price.
@@ -1668,7 +1652,7 @@ WHERE product_tag = 'tshirts'
 GROUP BY rating
 ORDER BY rating ASC;
 Average Rating for Each Product Category
-SELECT product_tag, AVG(rating) AS 'avg_rating', COUNT(*) AS 'total_products', SUM(rating_count) AS 'total_rating_count'
+SELECT product_tag, AVG(rating) AS 'avg_rating', COUNT(\*) AS 'total_products', SUM(rating_count) AS 'total_rating_count'
 FROM products
 GROUP BY product_tag
 ORDER BY avg_rating ASC;
@@ -1679,9 +1663,9 @@ WHERE discounted_price > 5000
 GROUP BY brand_tag
 ORDER BY avg_rating DESC;
 
-----------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-						Working with Subqueries
+    					Working with Subqueries
 
 In SQL, subqueries are a powerful feature that allow you to perform complex queries and achieve tasks that would be difficult or impossible with a single query. Subqueries, also known as inner queries or nested queries, are queries within another SQL query. This article will delve into the concept of subqueries, their types, and practical examples to help you master their use.
 
@@ -1703,7 +1687,6 @@ Assume we have a products table with the following columns: product_id, product_
 input_table
 Input Table
 
-
 Basic Query
 Find the average rating of products.
 
@@ -1712,7 +1695,6 @@ This query calculates the average rating of all products.
 
 avg
 query output
-
 
 Subquery in WHERE Clause
 Find the brand names with a rating higher than the average rating
@@ -1724,63 +1706,57 @@ Here, the subquery calculates the average rating of all products, and the outer 
 where
 query output
 
-
 Subquery in SELECT Clause
 Retrieve the product name along with the average rating of products.
 
 SELECT product_name, rating,
-       (SELECT AVG(rating) FROM gfg.products) AS 'avg_rating'
+(SELECT AVG(rating) FROM gfg.products) AS 'avg_rating'
 FROM gfg.products;
 The subquery calculates the average rating, and the outer query selects the product names along with their individual ratings and the overall average rating.
 
 select
 query output
 
-
 Subquery with Multiple Results
 Find the total rating count of products for each brand compared to the overall average rating count.
 
 SELECT brand_name,
-       (SELECT SUM(rating_count) FROM gfg.products WHERE brand_name = p.brand_name) AS total_rating_count
+(SELECT SUM(rating_count) FROM gfg.products WHERE brand_name = p.brand_name) AS total_rating_count
 FROM (SELECT DISTINCT brand_name FROM gfg.products) AS p;
 The subquery calculates the total rating count for each brand, and the outer query compares it with the overall average rating count.
 
 b
 query output
 
-
 Example 1: Single-row Subquery
 Find the product with the highest price.
 
-SELECT * FROM products
+SELECT \* FROM products
 WHERE price = (SELECT MAX(price) FROM products);
 The subquery finds the highest price, and the outer query selects the product with that price.
 
 c
 query output
 
-
 Example 2: Multi-row Subquery
 Find products from brands that have at least one product with a price greater than $1000.
 
-SELECT * FROM products
+SELECT \* FROM products
 WHERE brand_name IN (SELECT DISTINCT brand_name FROM products WHERE price > 1000);
 The subquery finds all distinct brands with at least one product priced over $1000. The outer query selects products from these brands.
 
 d
 query output
 
-
 Example 3: Scalar Subquery
 Find the average price of all products and list products that have a price greater than this average.
 
-SELECT * FROM products
+SELECT \* FROM products
 WHERE price > (SELECT AVG(price) FROM products);
 The subquery calculates the average price, and the outer query selects products with a price greater than this average.
 
 e
 query output
-
 
 Example 4: Correlated Subquery
 Find products with a price greater than the average price of their respective category.
@@ -1793,7 +1769,6 @@ The subquery calculates the average price for each category, and the outer query
 f
 query output
 
-
 Example 5: Subquery in FROM Clause
 Find the average price of products for each brand.
 
@@ -1805,19 +1780,20 @@ The subquery retrieves brand names and prices, and the outer query calculates th
 g
 query output
 
-
 Example 6: Subquery in SELECT Clause
 Find products and their price as a percentage of the most expensive product's price.
 
 SELECT product_id, product_name, price,
-       (price / (SELECT MAX(price) FROM products)) * 100 AS price_percentage
+(price / (SELECT MAX(price) FROM products)) \* 100 AS price_percentage
 FROM products;
 The subquery calculates the highest price, and the outer query calculates each product's price as a percentage of the highest price.
 
 h
 query output
----------------------------------------------------------------------------------------------------------------------------------------------
-							Joins in Action
+
+---
+
+    						Joins in Action
 
 Joins in SQL are fundamental operations used to combine data from two or more tables based on a related column between them. They are essential for querying relational databases effectively. This section delves into the theoretical aspects of various types of joins, explaining how they work and when to use them.
 
@@ -1850,8 +1826,9 @@ users_2022
 3
 users_2023
 Implementing Joins
+
 1. Inner Join
-Definition: An inner join returns only the rows that have matching values in both tables. If there is no match, the rows are not included in the result.
+   Definition: An inner join returns only the rows that have matching values in both tables. If there is no match, the rows are not included in the result.
 
 Syntax:
 SELECT columns
@@ -1863,15 +1840,14 @@ Use Case: Use an inner join when you want to find records that have correspondin
 Example:
 users_2021 and users_2022
 
-SELECT * FROM users.users_2021 AS t_2021
+SELECT \* FROM users.users_2021 AS t_2021
 INNER JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID;
 ex
 query output
 
-
 2. Left Join (Left Outer Join)
-Definition: A left join returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for columns from the right table.
+   Definition: A left join returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for columns from the right table.
 
 Syntax:
 SELECT columns
@@ -1883,14 +1859,13 @@ Use Case: Use a left join when you want to include all records from the left tab
 Example:
 users_2021 and users_2022
 
-SELECT * FROM users.users_2021 AS t_2021
+SELECT \* FROM users.users_2021 AS t_2021
 LEFT JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID;
 ex_1
 
-
 3. Right Join (Right Outer Join)
-Definition: A right join returns all rows from the right table and the matched rows from the left table. If there is no match, NULL values are returned for columns from the left table.
+   Definition: A right join returns all rows from the right table and the matched rows from the left table. If there is no match, NULL values are returned for columns from the left table.
 
 Syntax:
 SELECT columns
@@ -1902,14 +1877,13 @@ Use Case: Use a right join when you want to include all records from the right t
 Example:
 users_2023 and users_2021
 
-SELECT * FROM users.users_2023 AS t_2023
+SELECT \* FROM users.users_2023 AS t_2023
 RIGHT JOIN users.users_2021 AS t_2021
 ON t_2023.UserID = t_2021.UserID;
 ex_3
 
-
 4. Full Outer Join
-Definition: A full outer join returns all rows when there is a match in either left or right table. Rows without matches in both tables will have NULLs.
+   Definition: A full outer join returns all rows when there is a match in either left or right table. Rows without matches in both tables will have NULLs.
 
 Syntax:
 SELECT columns
@@ -1921,15 +1895,14 @@ Use Case: Use a full outer join when you want to include all records from both t
 Example:
 users_2021 and users_2023
 
-SELECT * FROM users.users_2021 AS t_2021
+SELECT \* FROM users.users_2021 AS t_2021
 FULL OUTER JOIN users.users_2023 AS t_2023
 ON t_2021.UserID = t_2023.UserID;
 ex_4
 query output
 
-
 5. Cross Join
-Definition: A cross join returns the Cartesian product of the two tables. This means every row from the first table is combined with every row from the second table.
+   Definition: A cross join returns the Cartesian product of the two tables. This means every row from the first table is combined with every row from the second table.
 
 Syntax:
 SELECT columns
@@ -1940,14 +1913,13 @@ Use Case: Use a cross join when you want to combine all rows from two tables wit
 Example:
 users_2021 and users_2022
 
-SELECT * FROM users.users_2021 AS t_2021
+SELECT \* FROM users.users_2021 AS t_2021
 CROSS JOIN users.users_2022 AS t_2022;
 ex_5
 query output
 
-
 6. Self Join
-Definition: A self join is a regular join but the table is joined with itself. It can be any type of join, such as inner join, left join, etc.
+   Definition: A self join is a regular join but the table is joined with itself. It can be any type of join, such as inner join, left join, etc.
 
 Syntax:
 SELECT a.columns, b.columns
@@ -1962,7 +1934,6 @@ INNER JOIN users.users_2022 b
 ON a.UserID = b.UserID;
 q
 query output
-
 
 Combining Joins with UNION
 The UNION operator is used to combine the result sets of two or more SELECT statements. Each SELECT statement within the UNION must have the same number of columns in the result sets with similar data types.
@@ -1980,23 +1951,26 @@ ON condition;
 Use Case: Use UNION to combine results of multiple joins into a single result set. This is useful when you need a comprehensive view that includes results from different types of joins.
 
 Example: users_2021 and users_2022
-SELECT * FROM users.users_2021 AS t_2021
+SELECT _ FROM users.users_2021 AS t_2021
 LEFT JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID
 UNION
-SELECT * FROM users.users_2021 AS t_2021
+SELECT _ FROM users.users_2021 AS t_2021
 RIGHT JOIN users.users_2022 AS t_2022
 ON t_2021.UserID = t_2022.UserID;
 e
 query output
----------------------------------------------------------------------------------------------------------------------------------------------
-							Set Operators in Action
+
+---
+
+    						Set Operators in Action
 
 Set operators in SQL are powerful tools that allow you to perform operations on the results of two or more SELECT statements. These operators include UNION, UNION ALL, EXCEPT, and INTERSECT. They are used to combine the results from multiple queries into a single result set and provide various ways to handle duplicate rows, differences, and intersections between datasets.
 
 Overview of Set Operators
+
 1. UNION
-Combines the result sets of two or more SELECT statements and removes duplicate rows.
+   Combines the result sets of two or more SELECT statements and removes duplicate rows.
 
 Syntax:
 SELECT columns FROM table1
@@ -2005,164 +1979,162 @@ SELECT columns FROM table2;
 Example:
 Union removes duplicates, we are using the similar database users, which we have created previously in joins.
 
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 UNION
-SELECT * FROM users.users_2022;
+SELECT _ FROM users.users_2022;
 1
 query output
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 UNION
-SELECT * FROM users.users_2023;
+SELECT _ FROM users.users_2023;
 2
 query output
 
 2. UNION ALL
-Combines the result sets of two or more SELECT statements without removing duplicates.
+   Combines the result sets of two or more SELECT statements without removing duplicates.
 
 Syntax:
 SELECT columns FROM table1
 UNION ALL
 SELECT columns FROM table2;
 Example:
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 UNION ALL
-SELECT * FROM users.users_2022;
+SELECT _ FROM users.users_2022;
 3
 query output
 
 3. EXCEPT
-Returns the rows from the first SELECT statement that are not in the second SELECT statement.
+   Returns the rows from the first SELECT statement that are not in the second SELECT statement.
 
 Syntax:
 SELECT columns FROM table1
 EXCEPT
 SELECT columns FROM table2;
 Example:
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 EXCEPT
-SELECT * FROM users.users_2022;
+SELECT _ FROM users.users_2022;
 4
 query output
-SELECT * FROM users.users_2023
+SELECT _ FROM users.users_2023
 EXCEPT
-SELECT * FROM users.users_2021;
+SELECT _ FROM users.users_2021;
 5
 query output
 
 4. INTERSECT
-Returns only the rows that are common to both SELECT statements.
+   Returns only the rows that are common to both SELECT statements.
 
 Syntax:
 SELECT columns FROM table1
 INTERSECT
 SELECT columns FROM table2;
 Example:
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 INTERSECT
-SELECT * FROM users.users_2022;
+SELECT _ FROM users.users_2022;
 6
 query output
-SELECT * FROM users.users_2022
+SELECT _ FROM users.users_2022
 INTERSECT
-SELECT * FROM users.users_2023;
+SELECT _ FROM users.users_2023;
 7
 query output
 Combining Multiple Set Operators
 You can combine multiple set operators to create complex queries. Note that UNION and UNION ALL can be combined, but the use of parentheses ensures the correct order of operations when combining multiple operators.
 
-SELECT * FROM users.users_2021
+SELECT _ FROM users.users_2021
 UNION ALL
-SELECT * FROM users.users_2022
+SELECT _ FROM users.users_2022
 UNION
-SELECT * FROM users.users_2023;
+SELECT \* FROM users.users_2023;
 8
 query output
 
 Practical Examples with Set Operators
+
 1. List the New Users Added in 2022
-SELECT * FROM users.users_2022
-EXCEPT
-SELECT * FROM users.users_2021;
-1
-query output
+   SELECT _ FROM users.users_2022
+   EXCEPT
+   SELECT _ FROM users.users_2021;
+   1
+   query output
 
 2. List the new users added in 2023
-SELECT * from users.users_2023
-EXCEPT
-SELECT * from users.users_2022;
-2
-query output
-
+   SELECT _ from users.users_2023
+   EXCEPT
+   SELECT _ from users.users_2022;
+   2
+   query output
 
 3. List the users who left us
-SELECT * FROM users.users_2021
-EXCEPT
-SELECT * FROM users.users_2022
-EXCEPT
-SELECT * FROM users.users_2023;
-3
-query output
-
+   SELECT _ FROM users.users_2021
+   EXCEPT
+   SELECT _ FROM users.users_2022
+   EXCEPT
+   SELECT \* FROM users.users_2023;
+   3
+   query output
 
 4. List All the Users That Were There Throughout the Database for 2021 & 2022
-SELECT * FROM users.users_2022
-UNION
-SELECT * FROM users.users_2021;
-4
-query output
-
+   SELECT _ FROM users.users_2022
+   UNION
+   SELECT _ FROM users.users_2021;
+   4
+   query output
 
 5. List All the Users That Are There Throughout the Database
-SELECT * FROM users.users_2021
-UNION
-SELECT * FROM users.users_2022
-UNION
-SELECT * FROM users.users_2023;
-5
-query output
-
+   SELECT _ FROM users.users_2021
+   UNION
+   SELECT _ FROM users.users_2022
+   UNION
+   SELECT \* FROM users.users_2023;
+   5
+   query output
 
 6. List the Users That Are There With Us for the Last 3 Years
-SELECT * FROM users.users_2021
-INTERSECT
-SELECT * FROM users.users_2022
-INTERSECT
-SELECT * FROM users.users_2023;
-6
-query output
+   SELECT _ FROM users.users_2021
+   INTERSECT
+   SELECT _ FROM users.users_2022
+   INTERSECT
+   SELECT \* FROM users.users_2023;
+   6
+   query output
 
 7. List All Users Except Those Who Are There With Us for 3 Years
-SELECT * FROM users.users_2021
-UNION
-SELECT * FROM users.users_2022
-UNION
-SELECT * FROM users.users_2023
-EXCEPT
-SELECT * FROM users.users_2021
-INTERSECT
-SELECT * FROM users.users_2022
-INTERSECT
-SELECT * FROM users.users_2023;
-7
-query output
+   SELECT _ FROM users.users_2021
+   UNION
+   SELECT _ FROM users.users_2022
+   UNION
+   SELECT _ FROM users.users_2023
+   EXCEPT
+   SELECT _ FROM users.users_2021
+   INTERSECT
+   SELECT _ FROM users.users_2022
+   INTERSECT
+   SELECT _ FROM users.users_2023;
+   7
+   query output
 8. Operators with Join
-You can also use set operators with joins between tables. Here are examples of combining set operators with joins.
+   You can also use set operators with joins between tables. Here are examples of combining set operators with joins.
 
-1. Operators with Left Join between users_2021 and users_2022
-SELECT * FROM users.users_2021 as t_2021 
-LEFT JOIN users.users_2022 as t_2022 
-on t_2021.UserID = T_2022.UserID 
-2. Operators with Right Join between users_2021 and users_2022
-SELECT * FROM users.users_2021 as t_2021 
-RIGHT JOIN users.users_2022 as t_2022 
-on t_2021.UserID = T_2022.UserID 
-3. Using Set Operators with Joins
-SELECT * FROM users.users_2021 as t_2021  LEFT JOIN users.users_2022 as t_2022  on t_2021.UserID = T_2022.UserID 
-UNION
-SELECT * FROM users.users_2021 as t_2021  RIGHT JOIN users.users_2022 as t_2022  on t_2021.UserID = T_2022.Use
+9. Operators with Left Join between users_2021 and users_2022
+   SELECT \* FROM users.users_2021 as t_2021
+   LEFT JOIN users.users_2022 as t_2022
+   on t_2021.UserID = T_2022.UserID
+10. Operators with Right Join between users_2021 and users_2022
+    SELECT \* FROM users.users_2021 as t_2021
+    RIGHT JOIN users.users_2022 as t_2022
+    on t_2021.UserID = T_2022.UserID
+11. Using Set Operators with Joins
+    SELECT _ FROM users.users_2021 as t_2021 LEFT JOIN users.users_2022 as t_2022 on t_2021.UserID = T_2022.UserID
+    UNION
+    SELECT _ FROM users.users_2021 as t_2021 RIGHT JOIN users.users_2022 as t_2022 on t_2021.UserID = T_2022.Use
 
----------------------------------------------------------------------------------------------------------------------------------------------
-					Restaurant Data Analysis with SQL - Assignment
+---
+
+    				Restaurant Data Analysis with SQL - Assignment
 
 Welcome to the restaurant analysis assignment using SQL! In this exercise, we'll use the swiggy database, focusing on the restaurants table. Below are the tasks you need to perform by writing the required queries. Try to solve the queries on your own before moving to the solutions provided at the end.
 
@@ -2182,93 +2154,92 @@ List the top 10 unique restaurants with unique names throughout the dataset as p
 Try to solve these queries by yourself before moving to the solution section below.
 
 Solution Query Explanation
+
 1. Which restaurant of Abohar is visited by the least number of people?
-SELECT * FROM restaurants
-WHERE city = 'Abohar' AND rating_count = (SELECT MIN(rating_count) FROM restaurants WHERE city = 'Abohar');
-This query selects the restaurant in Abohar with the minimum rating_count, which represents the least number of people visited.
+   SELECT \* FROM restaurants
+   WHERE city = 'Abohar' AND rating_count = (SELECT MIN(rating_count) FROM restaurants WHERE city = 'Abohar');
+   This query selects the restaurant in Abohar with the minimum rating_count, which represents the least number of people visited.
 
 2. Which restaurant has generated maximum revenue all over India?
-SELECT * FROM restaurants
-WHERE cost * rating_count = (SELECT MAX(cost * rating_count) FROM restaurants);
-Here, the query identifies the restaurant that has generated the highest revenue across all cities by multiplying cost and rating_count.
+   SELECT _ FROM restaurants
+   WHERE cost _ rating_count = (SELECT MAX(cost \* rating_count) FROM restaurants);
+   Here, the query identifies the restaurant that has generated the highest revenue across all cities by multiplying cost and rating_count.
 
 3. How many restaurants are having a rating more than the average rating?
-SELECT * FROM restaurants
-WHERE rating > (SELECT AVG(rating) FROM restaurants);
-This query counts all restaurants with a rating higher than the average rating.
+   SELECT \* FROM restaurants
+   WHERE rating > (SELECT AVG(rating) FROM restaurants);
+   This query counts all restaurants with a rating higher than the average rating.
 
 4. Which restaurant of Delhi has generated the most revenue?
-SELECT * FROM restaurants
-WHERE city = 'Delhi' AND cost * rating_count = (SELECT MAX(cost * rating_count) FROM restaurants WHERE city = 'Delhi');
-It identifies the restaurant in Delhi with the highest revenue by multiplying cost and rating_count.
+   SELECT _ FROM restaurants
+   WHERE city = 'Delhi' AND cost _ rating_count = (SELECT MAX(cost \* rating_count) FROM restaurants WHERE city = 'Delhi');
+   It identifies the restaurant in Delhi with the highest revenue by multiplying cost and rating_count.
 
 5. Which restaurant chain has the maximum number of restaurants?
-SELECT name, COUNT(name) AS no_of_chains
-FROM restaurants
-GROUP BY name
-ORDER BY no_of_chains DESC
-LIMIT 10;
-This query lists the top 10 restaurant chains by the number of restaurants they operate.
+   SELECT name, COUNT(name) AS no_of_chains
+   FROM restaurants
+   GROUP BY name
+   ORDER BY no_of_chains DESC
+   LIMIT 10;
+   This query lists the top 10 restaurant chains by the number of restaurants they operate.
 
 6. Which restaurant chain has generated maximum revenue?
-SELECT name, SUM(rating_count * cost) AS revenue
-FROM restaurants
-GROUP BY name
-ORDER BY revenue DESC
-LIMIT 10;
-It identifies the top 10 restaurant chains by the total revenue generated, calculated as the sum of rating_count * cost.
+   SELECT name, SUM(rating_count _ cost) AS revenue
+   FROM restaurants
+   GROUP BY name
+   ORDER BY revenue DESC
+   LIMIT 10;
+   It identifies the top 10 restaurant chains by the total revenue generated, calculated as the sum of rating_count _ cost.
 
 7. Which city has the maximum number of restaurants?
-SELECT city, COUNT(*) AS no_of_restaurants
-FROM restaurants
-GROUP BY city
-ORDER BY no_of_restaurants DESC
-LIMIT 10;
-This query determines the top 10 cities with the most restaurants.
+   SELECT city, COUNT(\*) AS no_of_restaurants
+   FROM restaurants
+   GROUP BY city
+   ORDER BY no_of_restaurants DESC
+   LIMIT 10;
+   This query determines the top 10 cities with the most restaurants.
 
 8. Which city has generated maximum revenue all over India?
-SELECT city, SUM(rating_count * cost) AS revenue
-FROM restaurants
-GROUP BY city
-ORDER BY revenue DESC
-LIMIT 10;
-It identifies the top 10 cities by total revenue generated from all restaurants, calculated as rating_count * cost.
+   SELECT city, SUM(rating_count _ cost) AS revenue
+   FROM restaurants
+   GROUP BY city
+   ORDER BY revenue DESC
+   LIMIT 10;
+   It identifies the top 10 cities by total revenue generated from all restaurants, calculated as rating_count _ cost.
 
 9. List 10 least expensive cuisines?
-SELECT cuisine, AVG(cost) AS avg_cost
-FROM restaurants
-GROUP BY cuisine
-ORDER BY avg_cost ASC
-LIMIT 10;
-This query lists the 10 cuisines with the lowest average cost across all restaurants.
+   SELECT cuisine, AVG(cost) AS avg_cost
+   FROM restaurants
+   GROUP BY cuisine
+   ORDER BY avg_cost ASC
+   LIMIT 10;
+   This query lists the 10 cuisines with the lowest average cost across all restaurants.
 
 10. List 10 most expensive cuisines?
-SELECT cuisine, AVG(cost) AS avg_cost
-FROM restaurants
-GROUP BY cuisine
-ORDER BY avg_cost DESC
-LIMIT 10;
-It lists the 10 cuisines with the highest average cost across all restaurants.
+    SELECT cuisine, AVG(cost) AS avg_cost
+    FROM restaurants
+    GROUP BY cuisine
+    ORDER BY avg_cost DESC
+    LIMIT 10;
+    It lists the 10 cuisines with the highest average cost across all restaurants.
 
 11. What city has Biryani as the most popular cuisine?
-SELECT city, AVG(cost), COUNT(*) AS restaurants
-FROM restaurants
-WHERE cuisine = 'Biryani'
-GROUP BY city
-ORDER BY restaurants DESC;
-This query determines which city has the highest number of restaurants offering Biryani as a cuisine.
+    SELECT city, AVG(cost), COUNT(\*) AS restaurants
+    FROM restaurants
+    WHERE cuisine = 'Biryani'
+    GROUP BY city
+    ORDER BY restaurants DESC;
+    This query determines which city has the highest number of restaurants offering Biryani as a cuisine.
 
 12. List top 10 unique restaurants with unique names throughout the dataset as per maximum revenue (Single restaurant with that name)
-SELECT name, SUM(cost * rating_count) AS revenue
-FROM restaurants
-GROUP BY name
-HAVING COUNT(name) = 1
-ORDER BY revenue DESC
-LIMIT 10;
-It lists the top 10 unique restaurants with distinct names that have generated the highest revenue, calculated as cost * rating_count.
-
-
+    SELECT name, SUM(cost _ rating_count) AS revenue
+    FROM restaurants
+    GROUP BY name
+    HAVING COUNT(name) = 1
+    ORDER BY revenue DESC
+    LIMIT 10;
+    It lists the top 10 unique restaurants with distinct names that have generated the highest revenue, calculated as cost _ rating_count.
 
 These queries cover a range of analytical tasks from finding specific restaurant metrics to aggregating data by cities, cuisines, and restaurant chains. Understanding and practicing these queries will enhance your SQL proficiency for data analysis in various domains.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
